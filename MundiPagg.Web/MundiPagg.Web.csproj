@@ -1,0 +1,387 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B2345DB4-408D-493F-802C-44F8B5191D21}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MundiPagg.Web</RootNamespace>
+    <AssemblyName>MundiPagg.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.5\lib\net45-full\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.2.0.0\lib\net45-full\Ninject.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject.Web.Common, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Web.Common.3.2.0.0\lib\net45-full\Ninject.Web.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject.Web.Mvc, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.MVC5.3.2.1.0\lib\net45-full\Ninject.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivatorEx.2.0\lib\net40\WebActivatorEx.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\NinjectConfigurator.cs" />
+    <Compile Include="App_Start\NinjectWebCommon.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\css\main.css" />
+    <Content Include="Content\fonts\font-awesome\fontawesome-webfont.svg" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="gruntfile.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="bower.json" />
+    <Content Include="package.json" />
+    <Content Include="Content\fonts\font-awesome\fontawesome-webfont.eot" />
+    <Content Include="Content\fonts\font-awesome\fontawesome-webfont.ttf" />
+    <Content Include="Content\fonts\font-awesome\fontawesome-webfont.woff" />
+    <Content Include="Content\fonts\font-awesome\fontawesome-webfont.woff2" />
+    <Content Include="Content\fonts\font-awesome\FontAwesome.otf" />
+    <Content Include="Content\scss\font-awesome\font-awesome.scss" />
+    <Content Include="Content\scss\font-awesome\_animated.scss" />
+    <Content Include="Content\scss\font-awesome\_bordered-pulled.scss" />
+    <Content Include="Content\scss\font-awesome\_core.scss" />
+    <Content Include="Content\scss\font-awesome\_fixed-width.scss" />
+    <Content Include="Content\scss\font-awesome\_icons.scss" />
+    <Content Include="Content\scss\font-awesome\_larger.scss" />
+    <Content Include="Content\scss\font-awesome\_list.scss" />
+    <Content Include="Content\scss\font-awesome\_mixins.scss" />
+    <Content Include="Content\scss\font-awesome\_path.scss" />
+    <Content Include="Content\scss\font-awesome\_rotated-flipped.scss" />
+    <Content Include="Content\scss\font-awesome\_stacked.scss" />
+    <Content Include="Content\scss\font-awesome\_variables.scss" />
+    <Content Include="Content\scss\foundation-sites\components\_accordion-menu.scss" />
+    <Content Include="Content\scss\foundation-sites\components\_accordion.scss" />
+    <Content Include="Content\scss\foundation-sites\components\_badge.scss" />
+    <Content Include="Content\scss\foundation-sites\components\_breadcrumbs.scss" />
+    <Content Include="Content\scss\foundation-sites\components\_button-group.scss" />
+    <Content Include="Content\scss\foundation-sites\components\_button.scss" />
+    <Content Include="Content\scss\foundation-sites\components\_callout.scss" />
+    <Content Include="Content\scss\foundation-sites\components\_close-button.scss" />
+    <Content Include="Content\scss\foundation-sites\components\_drilldown.scss" />
+    <Content Include="Content\scss\foundation-sites\components\_dropdown-menu.scss" />
+    <Content Include="Content\scss\foundation-sites\components\_dropdown.scss" />
+    <Content Include="Content\scss\foundation-sites\components\_flex-video.scss" />
+    <Content Include="Content\scss\foundation-sites\components\_float.scss" />
+    <Content Include="Content\scss\foundation-sites\components\_label.scss" />
+    <Content Include="Content\scss\foundation-sites\components\_media-object.scss" />
+    <Content Include="Content\scss\foundation-sites\components\_menu.scss" />
+    <Content Include="Content\scss\foundation-sites\components\_off-canvas.scss" />
+    <Content Include="Content\scss\foundation-sites\components\_orbit.scss" />
+    <Content Include="Content\scss\foundation-sites\components\_pagination.scss" />
+    <Content Include="Content\scss\foundation-sites\components\_progress-bar.scss" />
+    <Content Include="Content\scss\foundation-sites\components\_reveal.scss" />
+    <Content Include="Content\scss\foundation-sites\components\_slider.scss" />
+    <Content Include="Content\scss\foundation-sites\components\_sticky.scss" />
+    <Content Include="Content\scss\foundation-sites\components\_switch.scss" />
+    <Content Include="Content\scss\foundation-sites\components\_table.scss" />
+    <Content Include="Content\scss\foundation-sites\components\_tabs.scss" />
+    <Content Include="Content\scss\foundation-sites\components\_thumbnail.scss" />
+    <Content Include="Content\scss\foundation-sites\components\_title-bar.scss" />
+    <Content Include="Content\scss\foundation-sites\components\_tooltip.scss" />
+    <Content Include="Content\scss\foundation-sites\components\_top-bar.scss" />
+    <Content Include="Content\scss\foundation-sites\components\_visibility.scss" />
+    <Content Include="Content\scss\foundation-sites\forms\_checkbox.scss" />
+    <Content Include="Content\scss\foundation-sites\forms\_error.scss" />
+    <Content Include="Content\scss\foundation-sites\forms\_fieldset.scss" />
+    <Content Include="Content\scss\foundation-sites\forms\_forms.scss" />
+    <Content Include="Content\scss\foundation-sites\forms\_help-text.scss" />
+    <Content Include="Content\scss\foundation-sites\forms\_input-group.scss" />
+    <Content Include="Content\scss\foundation-sites\forms\_label.scss" />
+    <Content Include="Content\scss\foundation-sites\forms\_select.scss" />
+    <Content Include="Content\scss\foundation-sites\forms\_text.scss" />
+    <Content Include="Content\scss\foundation-sites\foundation.scss" />
+    <Content Include="Content\scss\foundation-sites\grid\_classes.scss" />
+    <Content Include="Content\scss\foundation-sites\grid\_column.scss" />
+    <Content Include="Content\scss\foundation-sites\grid\_flex-grid.scss" />
+    <Content Include="Content\scss\foundation-sites\grid\_grid.scss" />
+    <Content Include="Content\scss\foundation-sites\grid\_gutter.scss" />
+    <Content Include="Content\scss\foundation-sites\grid\_layout.scss" />
+    <Content Include="Content\scss\foundation-sites\grid\_position.scss" />
+    <Content Include="Content\scss\foundation-sites\grid\_row.scss" />
+    <Content Include="Content\scss\foundation-sites\grid\_size.scss" />
+    <Content Include="Content\scss\foundation-sites\settings\_settings.scss" />
+    <Content Include="Content\scss\foundation-sites\typography\_alignment.scss" />
+    <Content Include="Content\scss\foundation-sites\typography\_base.scss" />
+    <Content Include="Content\scss\foundation-sites\typography\_helpers.scss" />
+    <Content Include="Content\scss\foundation-sites\typography\_print.scss" />
+    <Content Include="Content\scss\foundation-sites\typography\_typography.scss" />
+    <Content Include="Content\scss\foundation-sites\util\_breakpoint.scss" />
+    <Content Include="Content\scss\foundation-sites\util\_color.scss" />
+    <Content Include="Content\scss\foundation-sites\util\_mixins.scss" />
+    <Content Include="Content\scss\foundation-sites\util\_selector.scss" />
+    <Content Include="Content\scss\foundation-sites\util\_unit.scss" />
+    <Content Include="Content\scss\foundation-sites\util\_util.scss" />
+    <Content Include="Content\scss\foundation-sites\util\_value.scss" />
+    <Content Include="Content\scss\foundation-sites\_global.scss" />
+    <Content Include="Content\scss\main.scss" />
+    <Content Include="Content\scss\_font.scss" />
+    <Content Include="Content\scss\_mixin.scss" />
+    <Content Include="Content\scss\_override_vendor.scss" />
+    <Content Include="Content\scss\_pallete.scss" />
+    <Content Include="Content\css\main.css.map" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\vendor\angular-mocks\angular-mocks.js" />
+    <Content Include="Scripts\vendor\angular-modal-service\angular-modal-service.js" />
+    <Content Include="Scripts\vendor\angular-resource\angular-resource.js" />
+    <Content Include="Scripts\vendor\angular-sanitize\angular-sanitize.js" />
+    <Content Include="Scripts\vendor\angular\angular.js" />
+    <Content Include="Scripts\vendor\foundation-sites\foundation.abide.js" />
+    <Content Include="Scripts\vendor\foundation-sites\foundation.accordion.js" />
+    <Content Include="Scripts\vendor\foundation-sites\foundation.accordionMenu.js" />
+    <Content Include="Scripts\vendor\foundation-sites\foundation.core.js" />
+    <Content Include="Scripts\vendor\foundation-sites\foundation.drilldown.js" />
+    <Content Include="Scripts\vendor\foundation-sites\foundation.dropdown.js" />
+    <Content Include="Scripts\vendor\foundation-sites\foundation.dropdownMenu.js" />
+    <Content Include="Scripts\vendor\foundation-sites\foundation.equalizer.js" />
+    <Content Include="Scripts\vendor\foundation-sites\foundation.interchange.js" />
+    <Content Include="Scripts\vendor\foundation-sites\foundation.js" />
+    <Content Include="Scripts\vendor\foundation-sites\foundation.magellan.js" />
+    <Content Include="Scripts\vendor\foundation-sites\foundation.min.js" />
+    <Content Include="Scripts\vendor\foundation-sites\foundation.offcanvas.js" />
+    <Content Include="Scripts\vendor\foundation-sites\foundation.orbit.js" />
+    <Content Include="Scripts\vendor\foundation-sites\foundation.responsiveMenu.js" />
+    <Content Include="Scripts\vendor\foundation-sites\foundation.responsiveToggle.js" />
+    <Content Include="Scripts\vendor\foundation-sites\foundation.reveal.js" />
+    <Content Include="Scripts\vendor\foundation-sites\foundation.slider.js" />
+    <Content Include="Scripts\vendor\foundation-sites\foundation.sticky.js" />
+    <Content Include="Scripts\vendor\foundation-sites\foundation.tabs.js" />
+    <Content Include="Scripts\vendor\foundation-sites\foundation.toggler.js" />
+    <Content Include="Scripts\vendor\foundation-sites\foundation.tooltip.js" />
+    <Content Include="Scripts\vendor\foundation-sites\foundation.util.box.js" />
+    <Content Include="Scripts\vendor\foundation-sites\foundation.util.keyboard.js" />
+    <Content Include="Scripts\vendor\foundation-sites\foundation.util.mediaQuery.js" />
+    <Content Include="Scripts\vendor\foundation-sites\foundation.util.motion.js" />
+    <Content Include="Scripts\vendor\foundation-sites\foundation.util.nest.js" />
+    <Content Include="Scripts\vendor\foundation-sites\foundation.util.timerAndImageLoader.js" />
+    <Content Include="Scripts\vendor\foundation-sites\foundation.util.touch.js" />
+    <Content Include="Scripts\vendor\foundation-sites\foundation.util.triggers.js" />
+    <Content Include="Scripts\vendor\jasmine-jquery\jasmine-jquery.js" />
+    <Content Include="Scripts\vendor\jasmine\jasmine.js" />
+    <Content Include="Scripts\vendor\jquery\jquery.js" />
+    <Content Include="Scripts\vendor\requirejs\require.js" />
+    <Content Include="Scripts\vendor\underscore\underscore.js" />
+    <Content Include="Scripts\vendor\what-input\what-input.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Content\fonts\font-awesome\fonts\" />
+    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="packages.config" />
+    <None Include="Project_Readme.html" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MundiPagg.Domain.Service\MundiPagg.Domain.Service.csproj">
+      <Project>{92f1c816-5fa6-41bf-b3bc-38636a91426f}</Project>
+      <Name>MundiPagg.Domain.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MundiPagg.Domain\MundiPagg.Domain.csproj">
+      <Project>{d35fdc75-016b-4418-8009-50045186dba4}</Project>
+      <Name>MundiPagg.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MundiPagg.Infra\MundiPagg.Infra.csproj">
+      <Project>{a6c6c5a5-2dc6-49b1-8018-ce63a3c83f27}</Project>
+      <Name>MundiPagg.Infra</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>5563</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:5563/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

@@ -1,0 +1,43 @@
+﻿
+// Palette function,
+@function palette($palette, $tone: 'base') {
+    @return map-get(map-get($mundipagg-palettes, $palette), $tone);
+    //usage: background:palette(green, light)
+}
+
+$mundipagg-palettes: (
+    red: (
+        light: #ef5350,
+        base: #c62828,
+        dark: #b71c1c
+    ),
+    orange: (
+        light: #ffb74d,
+        base: #ff9800,
+        dark: #ef6c00
+    ),
+    blue: (
+        light: #81d4fa,
+        base:#03a9f4,
+        dark: #0277bd
+    ),
+    green: (
+        light: #81c784,
+        base: #4caf50,
+        dark: #388e3c
+    ),
+    gray:(
+        light:#808080,
+        base:#333333,
+        dark:#282828
+    ),
+    white:(
+        light:#ffffff,
+        base:#ecf0f1,
+        dark:#ececec
+    ),
+    black: (
+        base: #000
+    )
+);
+

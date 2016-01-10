@@ -1,0 +1,20 @@
+﻿// Override Variables
+@import "_mixin";
+@import "_pallete";
+
+
+//FONTAWESOME PATH
+$fa-font-path:        "../fonts/font-awesome"; 
+
+
+//FOUNDATION TOP BAR
+$topbar-padding: 0.8rem;
+$topbar-background: palette(red, dark);
+$topbar-link-color: palette(white, base);
+$topbar-input-width: 200px;
+$topbar-height: 90px;
+$dropdownmenu-arrows: false;
+$dropdownmenu-border: 0px;
+
+
+
