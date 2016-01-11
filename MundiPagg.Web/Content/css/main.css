@@ -5216,7 +5216,7 @@ table.hover tr:nth-of-type(even):hover {
     clear: both; }
   .top-bar,
   .top-bar ul {
-    background-color: #b71c1c; }
+    background-color: #03a9f4; }
   .top-bar a {
     color: #ecf0f1; }
   .top-bar input {
@@ -5254,5 +5254,23 @@ table.hover tr:nth-of-type(even):hover {
 
 .top-bar-right {
   float: right; }
+
+.menu-text-color {
+  color: #ecf0f1; }
+
+.white-text {
+  color: #ecf0f1 !important; }
+
+.top-bar-right ul.menu li {
+  padding: 0 20px 0 20px; }
+
+label.error {
+  padding: 0 0 20px 0;
+  color: #c62828;
+  margin: 0;
+  font-size: 12px; }
+
+input.error, select.error {
+  border-color: #c62828; }
 
 /*# sourceMappingURL=main.css.map */

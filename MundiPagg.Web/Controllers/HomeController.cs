@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace MundiPagg.Web.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : Base.BaseController
     {
         public ActionResult Index()
         {

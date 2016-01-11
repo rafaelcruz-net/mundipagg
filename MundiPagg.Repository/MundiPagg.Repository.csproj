@@ -84,9 +84,9 @@
     <Compile Include="Mapping\CustomerAddressMapping.cs" />
     <Compile Include="Mapping\CustomerMapping.cs" />
     <Compile Include="Mapping\StateMapping.cs" />
-    <Compile Include="Migrations\201601102053242_InitialMigration.cs" />
-    <Compile Include="Migrations\201601102053242_InitialMigration.Designer.cs">
-      <DependentUpon>201601102053242_InitialMigration.cs</DependentUpon>
+    <Compile Include="Migrations\201601110341134_Initial.cs" />
+    <Compile Include="Migrations\201601110341134_Initial.Designer.cs">
+      <DependentUpon>201601110341134_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -105,10 +105,9 @@
       <Name>MundiPagg.Infra</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201601102053242_InitialMigration.resx">
-      <DependentUpon>201601102053242_InitialMigration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201601110341134_Initial.resx">
+      <DependentUpon>201601110341134_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

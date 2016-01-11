@@ -13,6 +13,8 @@ namespace MundiPagg.Domain
         public virtual String CPF { get; set; }
         public virtual DateTime Birthday { get; set; }
         public virtual String Genre { get; set; }
+        public virtual String Email { get; set; }
+        public virtual String Password { get; set; }
         public virtual IList<CustomerAddress> Address { get; set; }
 
     }

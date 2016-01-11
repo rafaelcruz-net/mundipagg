@@ -10,6 +10,7 @@ namespace MundiPagg.Domain
     {
         public virtual Guid Id { get; set; }
         public virtual Guid IdCustomer { get; set; }
+        public virtual int CityId{ get; set; }
         public virtual String Cep { get; set; }
         public virtual String Address { get; set; }
         public virtual String Complement { get; set; }

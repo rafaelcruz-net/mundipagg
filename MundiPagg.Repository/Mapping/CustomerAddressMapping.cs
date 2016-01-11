@@ -23,10 +23,7 @@ namespace MundiPagg.Repository.Mapping
             this.Property(x => x.Number).IsRequired().HasMaxLength(5);
             this.Property(x => x.Neighbor).IsRequired().HasMaxLength(100);
             
-            this.HasRequired(x=>x.City).WithRequiredPrincipal().Map((x) =>
-            {
-                x.MapKey("CityId");
-            });
+            this.HasRequired(x=>x.City).WithMany().HasForeignKey(x => x.CityId);
 
 
 

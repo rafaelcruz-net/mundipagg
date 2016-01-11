@@ -17,10 +17,11 @@ namespace MundiPagg.Repository.Mapping
             this.ToTable("Customer");
             this.HasKey(x => x.Id);
             this.Property(x => x.Id).HasColumnName("CustomerId").HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
-            this.Property(x => x.Name).HasColumnName("CustomerName").IsRequired().HasMaxLength(200);
-            this.Property(x => x.CPF).HasColumnName("CustomerCPF").IsRequired().HasMaxLength(11);
-            this.Property(x => x.Birthday).HasColumnName("CustomerBirthday").IsRequired();
-            this.Property(x => x.Genre).HasColumnName("CustomerGenre").IsRequired().HasMaxLength(1);
+            this.Property(x => x.Name).IsRequired().HasMaxLength(200);
+            this.Property(x => x.CPF).IsRequired().HasMaxLength(11);
+            this.Property(x => x.Birthday).IsRequired();
+            this.Property(x => x.Genre).IsRequired().HasMaxLength(1);
+            this.Property(x => x.Email).IsRequired().HasMaxLength(200);
 
             this.HasMany(x => x.Address).WithOptional().HasForeignKey(x => x.IdCustomer);
 

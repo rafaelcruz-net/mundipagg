@@ -3,7 +3,7 @@ namespace MundiPagg.Repository.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialMigration : DbMigration
+    public partial class Initial : DbMigration
     {
         public override void Up()
         {
@@ -11,26 +11,25 @@ namespace MundiPagg.Repository.Migrations
                 "dbo.City",
                 c => new
                     {
-                        CustomerAdressId = c.Int(nullable: false, identity: true),
+                        CityId = c.Int(nullable: false, identity: false),
                         Name = c.String(nullable: false, maxLength: 200),
-                        CityId = c.Guid(nullable: false),
+                        Uf = c.String(nullable: false, maxLength: 2),
+                        CodIbge = c.String(nullable: false, maxLength: 200),
+                        Area = c.String(nullable: false, maxLength: 200),
                     })
-                .PrimaryKey(t => t.CustomerAdressId)
-                .ForeignKey("dbo.CustomerAddress", t => t.CityId)
-                .Index(t => t.CityId);
+                .PrimaryKey(t => t.CityId)
+                .ForeignKey("dbo.State", t => t.Uf, cascadeDelete: true)
+                .Index(t => t.Uf);
             
             CreateTable(
                 "dbo.State",
                 c => new
                     {
-                        CustomerAdressId = c.Int(nullable: false, identity: true),
                         UF = c.String(nullable: false, maxLength: 2),
                         Name = c.String(nullable: false, maxLength: 200),
-                        StateId = c.Int(nullable: false),
+                        CodIbge = c.String(nullable: false),
                     })
-                .PrimaryKey(t => t.CustomerAdressId)
-                .ForeignKey("dbo.City", t => t.StateId)
-                .Index(t => t.StateId);
+                .PrimaryKey(t => t.UF);
             
             CreateTable(
                 "dbo.CustomerAddress",
@@ -38,6 +37,7 @@ namespace MundiPagg.Repository.Migrations
                     {
                         CustomerAdressId = c.Guid(nullable: false, identity: true),
                         IdCustomer = c.Guid(nullable: false),
+                        CityId = c.Int(nullable: false),
                         Cep = c.String(nullable: false, maxLength: 9),
                         Address = c.String(nullable: false, maxLength: 500),
                         Complement = c.String(nullable: false, maxLength: 200),
@@ -45,18 +45,22 @@ namespace MundiPagg.Repository.Migrations
                         Neighbor = c.String(nullable: false, maxLength: 100),
                     })
                 .PrimaryKey(t => t.CustomerAdressId)
+                .ForeignKey("dbo.City", t => t.CityId, cascadeDelete: true)
                 .ForeignKey("dbo.Customer", t => t.IdCustomer, cascadeDelete: true)
-                .Index(t => t.IdCustomer);
+                .Index(t => t.IdCustomer)
+                .Index(t => t.CityId);
             
             CreateTable(
                 "dbo.Customer",
                 c => new
                     {
                         CustomerId = c.Guid(nullable: false, identity: true),
-                        CustomerName = c.String(nullable: false, maxLength: 200),
-                        CustomerCPF = c.String(nullable: false, maxLength: 11),
-                        CustomerBirthday = c.DateTime(nullable: false),
-                        CustomerGenre = c.String(nullable: false, maxLength: 1),
+                        Name = c.String(nullable: false, maxLength: 200),
+                        CPF = c.String(nullable: false, maxLength: 11),
+                        Birthday = c.DateTime(nullable: false),
+                        Genre = c.String(nullable: false, maxLength: 1),
+                        Email = c.String(nullable: false, maxLength: 200),
+                        Password = c.String(),
                     })
                 .PrimaryKey(t => t.CustomerId);
             
@@ -65,11 +69,11 @@ namespace MundiPagg.Repository.Migrations
         public override void Down()
         {
             DropForeignKey("dbo.CustomerAddress", "IdCustomer", "dbo.Customer");
-            DropForeignKey("dbo.City", "CityId", "dbo.CustomerAddress");
-            DropForeignKey("dbo.State", "StateId", "dbo.City");
+            DropForeignKey("dbo.CustomerAddress", "CityId", "dbo.City");
+            DropForeignKey("dbo.City", "Uf", "dbo.State");
+            DropIndex("dbo.CustomerAddress", new[] { "CityId" });
             DropIndex("dbo.CustomerAddress", new[] { "IdCustomer" });
-            DropIndex("dbo.State", new[] { "StateId" });
-            DropIndex("dbo.City", new[] { "CityId" });
+            DropIndex("dbo.City", new[] { "Uf" });
             DropTable("dbo.Customer");
             DropTable("dbo.CustomerAddress");
             DropTable("dbo.State");

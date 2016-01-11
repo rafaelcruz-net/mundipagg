@@ -16,13 +16,13 @@ namespace MundiPagg.Repository.Mapping
         {
             this.ToTable("City");
             this.HasKey(x => x.Id);
-            this.Property(x => x.Id).HasColumnName("CustomerAdressId").HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+            this.Property(x => x.Id).HasColumnName("CityId");
             this.Property(x => x.Name).IsRequired().HasMaxLength(200);
-            
-            this.HasRequired(x => x.State).WithRequiredPrincipal().Map((x) =>
-            {
-                x.MapKey("StateId");
-            });
+            this.Property(x => x.Uf).IsRequired().HasMaxLength(200);
+            this.Property(x => x.CodIbge).IsRequired().HasMaxLength(200);
+            this.Property(x => x.Area).IsRequired().HasMaxLength(200);
+
+            this.HasRequired(x => x.State).WithMany().HasForeignKey(x => x.Uf);
         }
     }
 }

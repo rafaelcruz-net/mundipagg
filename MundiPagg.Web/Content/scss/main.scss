@@ -6,3 +6,30 @@
 @import "foundation-sites/foundation";
 
 @include foundation-everything;
+
+
+.menu-text-color {
+    color: palette(white, base);
+}
+
+.white-text {
+    color: palette(white, base) !important;
+}
+
+.top-bar-right {
+    ul.menu {
+        li {
+            padding: 0 20px 0 20px;
+        }
+    }
+}
+
+label.error {
+    padding: 0 0 20px 0;
+    color: palette(red, base);
+    margin: 0;
+    font-size: 12px;
+}
+input.error, select.error{
+    border-color: palette(red, base);
+}

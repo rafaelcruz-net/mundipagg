@@ -15,10 +15,11 @@ namespace MundiPagg.Repository.Mapping
         public StateMapping()
         {
             this.ToTable("State");
-            this.HasKey(x => x.Id);
-            this.Property(x => x.Id).HasColumnName("CustomerAdressId").HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+            this.HasKey(x => x.UF);
+            this.Property(x => x.UF).HasColumnName("UF");
             this.Property(x => x.Name).IsRequired().HasMaxLength(200);
             this.Property(x => x.UF).IsRequired().HasMaxLength(2);
+            this.Property(x => x.CodIbge).IsRequired();
         }
 
     }
