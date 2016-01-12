@@ -1,0 +1,173 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model MundiPagg.Web.ModelView.CreateCustomerModelView
+
+@section scripts {
+
+    <script type="text/javascript">
+        require(["app/mundipagg.main", "app/controller/accountController"], function (app, accountController) {
+            app.controller("AccountController", accountController);
+            angular.bootstrap(document, ["mundipagg_app"]);
+        });
+    </script>
+
+}
+<div data-ng-controller="AccountController">
+    <div class="row">
+        <div class="medium-12 columns">
+            <h3>Criar Conta</h3>
+            <p>Crie a sua conta e começe a disfrutar de cinema, eventos e teatro</p>
+        </div>
+    </div>
+    <div class="row">
+        <form name="formStep1" id="formStep1" ng-submit="doStepOne(formStep1)" ng-validate="validationOptions">
+            <fieldset class="fieldset">
+                <div class="row">
+                    <div class="small-2 columns">
+                        <label for="Name" class="middle">Nome</label>
+                    </div>
+                    <div class="small-10 columns">
+                        @Html.TextBoxFor(x => x.Name, new { placeholder = "Nome Completo", @ng_model="RegisterModel.Name" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="small-2 columns">
+                        <label for="CPF" class="middle">CPF</label>
+                    </div>
+                    <div class="small-10 columns">
+                        @Html.TextBoxFor(x => x.CPF, new { placeholder = "CPF", maxlength="11", @ng_model = "RegisterModel.CPF" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="small-2 columns">
+                        <label for="Email" class="middle">Email</label>
+                    </div>
+                    <div class="small-10 columns">
+                        @Html.TextBoxFor(x => x.Email, new { placeholder = "Email", @ng_model = "RegisterModel.Email" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="small-2 columns">
+                        <label for="Birthday" class="middle">Data de Aniversário</label>
+                    </div>
+                    <div class="small-10 columns">
+                        @Html.TextBoxFor(x => x.Birthday, new { placeholder = "Data de Aniversário", @readonly="readonly", @ng_model = "RegisterModel.Birthday" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="small-2 columns">
+                        <label for="Genre" class="middle">Sexo</label>
+                    </div>
+                    <div class="small-10 columns">
+                        @Html.DropDownListFor(x => x.Genre, new List<SelectListItem>()
+                    {
+                       new SelectListItem() { Text = "Selecione", Value="" },
+                       new SelectListItem() { Text = "Masculino", Value="M" },
+                       new SelectListItem() { Text = "Feminino", Value="F" },
+                    }, new { @ng_model = "RegisterModel.Genre" })
+                    </div>
+                </div>
+               
+                <div class="row">
+                    <div class="small-2 columns">
+                        <label for="Password" class="middle">Password</label>
+                    </div>
+                    <div class="small-10 columns">
+                        @Html.PasswordFor(x => x.Password, new { placeholder = "Password", @ng_model = "RegisterModel.Password" })
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="small-2 columns">
+                        <label for="ConfirmPassword" class="middle">Confirmação de Password</label>
+                    </div>
+                    <div class="small-10 columns">
+                        @Html.PasswordFor(x => x.ConfirmPassword, new { placeholder = "Confirme seu Password", @ng_model = "RegisterModel.ConfirmPassword" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="small-2 columns small-offset-10">
+                        <button class="secondary button float-right">Avançar</button>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+        <form name="formStep2" id="formStep2"  ng-submit="doStepTwo(formStep2)" ng-validate="validationOptionsForAddress">
+            <fieldset class="fieldset">
+                <div class="row">
+                    <div class="small-2 columns">
+                        <label for="Name" class="middle">Cep</label>
+                    </div>
+                    <div class="small-10 columns">
+                        @Html.TextBoxFor(x => x.Address.Cep, new { placeholder = "CEP", @ng_model = "RegisterModel.Address.Cep", @class= "float-left" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="small-2 columns">
+                        <label for="CPF" class="middle">Logradouro</label>
+                    </div>
+                    <div class="small-10 columns">
+                        @Html.TextBoxFor(x => x.Address.Address, new { placeholder = "Logradouro", @ng_model = "RegisterModel.Address.Address" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="small-2 columns">
+                        <label for="Email" class="middle">Complemento</label>
+                    </div>
+                    <div class="small-10 columns">
+                        @Html.TextBoxFor(x => x.Address.Complement, new { placeholder = "Complemento", @ng_model = "RegisterModel.Address.Complement" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="small-2 columns">
+                        <label for="Birthday" class="middle">Número</label>
+                    </div>
+                    <div class="small-10 columns">
+                        @Html.TextBoxFor(x => x.Address.Number, new { placeholder = "Número", @ng_model = "RegisterModel.Address.Number" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="small-2 columns">
+                        <label for="Birthday" class="middle">Bairro</label>
+                    </div>
+                    <div class="small-10 columns">
+                        @Html.TextBoxFor(x => x.Address.Number, new { placeholder = "Bairro", @ng_model = "RegisterModel.Address.Neighbor" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="small-2 columns">
+                        <label for="Genre" class="middle">Estado</label>
+                    </div>
+                    <div class="small-10 columns">
+                        @Html.DropDownListFor(x => x.Address.State, new List<SelectListItem>()
+                    {
+                       new SelectListItem() { Text = "Selecione", Value="" },
+                       new SelectListItem() { Text = "Masculino", Value="M" },
+                       new SelectListItem() { Text = "Feminino", Value="F" },
+                    }, new { @ng_model = "RegisterModel.Address.State" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="small-2 columns">
+                        <label for="Genre" class="middle">Cidade</label>
+                    </div>
+                    <div class="small-10 columns">
+                        @Html.DropDownListFor(x => x.Address.City, new List<SelectListItem>()
+                    {
+                       new SelectListItem() { Text = "Selecione", Value="" },
+                       new SelectListItem() { Text = "Masculino", Value="M" },
+                       new SelectListItem() { Text = "Feminino", Value="F" },
+                    }, new { @ng_model = "RegisterModel.Address.City" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="small-2 columns small-offset-10">
+                        <button class="secondary button float-right">Criar Conta</button>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
