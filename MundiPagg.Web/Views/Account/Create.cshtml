@@ -7,7 +7,9 @@
 @section scripts {
 
     <script type="text/javascript">
-        require(["app/mundipagg.main", "app/controller/accountController"], function (app, accountController) {
+        require(["app/mundipagg.main", "app/services/stateService", "app/services/accountService", "app/controller/accountController"], function (app, stateService, accountService ,accountController) {
+            app.service("StateService", stateService);
+            app.service("AccountService", accountService);
             app.controller("AccountController", accountController);
             angular.bootstrap(document, ["mundipagg_app"]);
         });
@@ -94,14 +96,14 @@
                 </div>
             </fieldset>
         </form>
-        <form name="formStep2" id="formStep2"  ng-submit="doStepTwo(formStep2)" ng-validate="validationOptionsForAddress">
+        <form name="formStep2" id="formStep2" style="display:none"  ng-submit="doStepTwo(formStep2)" ng-validate="validationOptionsForAddress">
             <fieldset class="fieldset">
                 <div class="row">
                     <div class="small-2 columns">
-                        <label for="Name" class="middle">Cep</label>
+                        <label for="CEP" class="middle">Cep</label>
                     </div>
                     <div class="small-10 columns">
-                        @Html.TextBoxFor(x => x.Address.Cep, new { placeholder = "CEP", @ng_model = "RegisterModel.Address.Cep", @class= "float-left" })
+                        @Html.TextBoxFor(x => x.Address.Cep, new { placeholder = "CEP", @ng_model = "RegisterModel.Address.Cep", @class= "float-left", id="CEP", @Name="CEP" })
                     </div>
                 </div>
                 <div class="row">
@@ -109,15 +111,7 @@
                         <label for="CPF" class="middle">Logradouro</label>
                     </div>
                     <div class="small-10 columns">
-                        @Html.TextBoxFor(x => x.Address.Address, new { placeholder = "Logradouro", @ng_model = "RegisterModel.Address.Address" })
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="small-2 columns">
-                        <label for="Email" class="middle">Complemento</label>
-                    </div>
-                    <div class="small-10 columns">
-                        @Html.TextBoxFor(x => x.Address.Complement, new { placeholder = "Complemento", @ng_model = "RegisterModel.Address.Complement" })
+                        @Html.TextBoxFor(x => x.Address.Address, new { placeholder = "Logradouro", @ng_model = "RegisterModel.Address.Address", id = "Address", @Name = "Address" })
                     </div>
                 </div>
                 <div class="row">
@@ -125,7 +119,15 @@
                         <label for="Birthday" class="middle">Número</label>
                     </div>
                     <div class="small-10 columns">
-                        @Html.TextBoxFor(x => x.Address.Number, new { placeholder = "Número", @ng_model = "RegisterModel.Address.Number" })
+                        @Html.TextBoxFor(x => x.Address.Number, new { placeholder = "Número", @ng_model = "RegisterModel.Address.Number", id = "Number", @Name = "Number" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="small-2 columns">
+                        <label for="Email" class="middle">Complemento</label>
+                    </div>
+                    <div class="small-10 columns">
+                        @Html.TextBoxFor(x => x.Address.Complement, new { placeholder = "Complemento", @ng_model = "RegisterModel.Address.Complement", id = "Complement", @Name = "Complement" })
                     </div>
                 </div>
                 <div class="row">
@@ -133,7 +135,7 @@
                         <label for="Birthday" class="middle">Bairro</label>
                     </div>
                     <div class="small-10 columns">
-                        @Html.TextBoxFor(x => x.Address.Number, new { placeholder = "Bairro", @ng_model = "RegisterModel.Address.Neighbor" })
+                        @Html.TextBoxFor(x => x.Address.Number, new { placeholder = "Bairro", @ng_model = "RegisterModel.Address.Neighbor", id = "Neighbor", @Name = "Neighbor" })
                     </div>
                 </div>
                 <div class="row">
@@ -141,12 +143,7 @@
                         <label for="Genre" class="middle">Estado</label>
                     </div>
                     <div class="small-10 columns">
-                        @Html.DropDownListFor(x => x.Address.State, new List<SelectListItem>()
-                    {
-                       new SelectListItem() { Text = "Selecione", Value="" },
-                       new SelectListItem() { Text = "Masculino", Value="M" },
-                       new SelectListItem() { Text = "Feminino", Value="F" },
-                    }, new { @ng_model = "RegisterModel.Address.State" })
+                        @Html.DropDownListFor(x => x.Address.State, (IEnumerable<SelectListItem>)ViewBag.States, "Selecione", new { @ng_model = "RegisterModel.Address.State", @ng_change= "loadCities(RegisterModel.Address.State);", id = "State", @Name = "State" })
                     </div>
                 </div>
                 <div class="row">
@@ -154,12 +151,10 @@
                         <label for="Genre" class="middle">Cidade</label>
                     </div>
                     <div class="small-10 columns">
-                        @Html.DropDownListFor(x => x.Address.City, new List<SelectListItem>()
+                    @Html.DropDownListFor(x => x.Address.City, new List<SelectListItem>()
                     {
                        new SelectListItem() { Text = "Selecione", Value="" },
-                       new SelectListItem() { Text = "Masculino", Value="M" },
-                       new SelectListItem() { Text = "Feminino", Value="F" },
-                    }, new { @ng_model = "RegisterModel.Address.City" })
+                    }, new { @ng_model = "RegisterModel.Address.City", id = "City", @Name = "City" })
                     </div>
                 </div>
                 <div class="row">

@@ -14,26 +14,36 @@ using MundiPagg.Repository.Context.Interfaces;
 
 namespace MundiPagg.Repository.Context
 {
-    public abstract class RepositoryBase<T> where T : class
+    public class RepositoryBase<T> : IRepositoryBase<T> where T : class
     {
+        private DbSet<T> _dbSet = null;
 
         [Inject]
         public IDbContext DbContext
         {
             get;
-            private set;
+            set;
         }
 
         public DbSet<T> DbSet
         {
-            get;
-            private set;
+            get
+            {
+                if (_dbSet == null)
+                    this._dbSet = this.DbContext.Set<T>() as DbSet<T>;
+
+                return this._dbSet;
+            }
+            set
+            {
+                this._dbSet = value;
+            }
         }
 
            
         public RepositoryBase()
         {
-
+            
         }
 
         public RepositoryBase(IDbContext context)

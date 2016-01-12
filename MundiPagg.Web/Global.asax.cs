@@ -18,6 +18,7 @@ namespace MundiPagg.Web
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             DependencyResolver.SetResolver(new Infra.IoC.NinjectDependencyResolver(Infra.IoC.Kernel.Instance));
+
             log4net.Config.XmlConfigurator.Configure();
         }
     }

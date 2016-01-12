@@ -48,6 +48,14 @@
       <HintPath>..\packages\AutoMapper.4.1.1\lib\net45\AutoMapper.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.2.0.5\lib\net45-full\log4net.dll</HintPath>
       <Private>True</Private>
@@ -149,6 +157,7 @@
     <Compile Include="Controllers\Base\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\StateController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -164,6 +173,8 @@
     <Content Include="Scripts\app\controller\accountController.js" />
     <Content Include="Scripts\app\mundipagg.app.js" />
     <Content Include="Scripts\app\mundipagg.main.js" />
+    <Content Include="Scripts\app\services\accountService.js" />
+    <Content Include="Scripts\app\services\stateService.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="bower.json" />
@@ -334,7 +345,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Content\fonts\font-awesome\fonts\" />
     <Folder Include="Scripts\app\directives\" />
-    <Folder Include="Scripts\app\services\" />
+    <Folder Include="Views\State\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

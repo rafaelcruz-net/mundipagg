@@ -40,7 +40,15 @@ namespace MundiPagg.Web.Controllers.Base
             return new StandardJsonResult<T> { Data = data };
         }
 
+        protected StandardJsonResult JsonSuccess()
+        {
+            return new StandardJsonResult();
+        }
 
+        protected StandardJsonResult JsonSuccess(Object Data)
+        {
+            return new StandardJsonResult<Object> { Data = Data };
+        }
 
     }
 }

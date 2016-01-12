@@ -30,7 +30,7 @@ namespace MundiPagg.Repository.Configuration
         public override void Load()
         {
             Bind<DbContext>().ToSelf().InThreadScope();
-            Bind(typeof(IDbContext)).To(typeof(BaseContext)).InThreadScope();
+            Bind(typeof(IDbContext)).To(typeof(MundiPaggContext)).InThreadScope();
             Bind(typeof(IRepositoryBase<>)).To(typeof(RepositoryBase<>)).InRequestScope();
 
 
