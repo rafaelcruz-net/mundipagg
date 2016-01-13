@@ -17,9 +17,9 @@ namespace MundiPagg.Repository.Mapping
             this.ToTable("State");
             this.HasKey(x => x.UF);
             this.Property(x => x.UF).HasColumnName("UF");
-            this.Property(x => x.Name).IsRequired().HasMaxLength(200);
-            this.Property(x => x.UF).IsRequired().HasMaxLength(2);
-            this.Property(x => x.CodIbge).IsRequired();
+            this.Property(x => x.Name).HasMaxLength(200);
+            this.Property(x => x.UF).HasMaxLength(2);
+            this.Property(x => x.CodIbge);
         }
 
     }

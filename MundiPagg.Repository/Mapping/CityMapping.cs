@@ -17,10 +17,10 @@ namespace MundiPagg.Repository.Mapping
             this.ToTable("City");
             this.HasKey(x => x.Id);
             this.Property(x => x.Id).HasColumnName("CityId");
-            this.Property(x => x.Name).IsRequired().HasMaxLength(200);
-            this.Property(x => x.Uf).IsRequired().HasMaxLength(200);
-            this.Property(x => x.CodIbge).IsRequired().HasMaxLength(200);
-            this.Property(x => x.Area).IsRequired().HasMaxLength(200);
+            this.Property(x => x.Name).HasMaxLength(200);
+            this.Property(x => x.Uf).HasMaxLength(200);
+            this.Property(x => x.CodIbge).HasMaxLength(200);
+            this.Property(x => x.Area).HasMaxLength(200);
 
             this.HasRequired(x => x.State).WithMany().HasForeignKey(x => x.Uf);
         }

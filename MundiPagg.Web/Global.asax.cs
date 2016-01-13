@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MundiPagg.Web.App_Start;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -20,6 +21,8 @@ namespace MundiPagg.Web
             DependencyResolver.SetResolver(new Infra.IoC.NinjectDependencyResolver(Infra.IoC.Kernel.Instance));
 
             log4net.Config.XmlConfigurator.Configure();
+
+            AutoMapperConfig.RegisterMapping();
         }
     }
 }

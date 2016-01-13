@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MundiPagg.Domain;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -6,7 +7,7 @@ using System.Web;
 
 namespace MundiPagg.Web.ModelView
 {
-    public class CreateCustomerModelView
+    public class CreateCustomerModelView : BaseModelView<Customer>
     {
         public String Name { get; set; }
         public String CPF { get; set; }
@@ -16,6 +17,43 @@ namespace MundiPagg.Web.ModelView
         public String Password { get; set; }
         public String ConfirmPassword { get; set; }
         public CreateCustomerAddressModelView Address { get; set; }
+
+        public override Customer ToDomain()
+        {
+            Customer customer = new Customer()
+            {
+                Birthday = this.Birthday,
+                CPF = this.CPF,
+                Email = this.Email,
+                Genre = this.Genre,
+                Name = this.Name,
+                Password = this.Password
+            };
+
+            //if (this.Address != null)
+            //{
+
+            //    customer.Address.Add(new CustomerAddress()
+            //    {
+            //        Address = this.Address.Address,
+            //        Cep = this.Address.Cep,
+            //        CityId = Convert.ToInt32(this.Address.City),
+            //        Complement = this.Address.Complement,
+            //        Neighbor = this.Address.Neighbor,
+            //        Number = this.Address.Number,
+            //        City = new City()
+            //        {
+            //            Id = Convert.ToInt32(this.Address.City),
+            //            State = new State()
+            //            {
+            //                UF = this.Address.State
+            //            }
+            //        }
+            //    });
+            //}
+
+            return customer;
+        }
     }
 
     public class CreateCustomerAddressModelView

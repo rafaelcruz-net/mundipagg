@@ -91,6 +91,18 @@
     <Compile Include="Migrations\201601110341134_Initial.Designer.cs">
       <DependentUpon>201601110341134_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201601130044479_AlterTable.cs" />
+    <Compile Include="Migrations\201601130044479_AlterTable.Designer.cs">
+      <DependentUpon>201601130044479_AlterTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601130048224_AlterTableCodIbge.cs" />
+    <Compile Include="Migrations\201601130048224_AlterTableCodIbge.Designer.cs">
+      <DependentUpon>201601130048224_AlterTableCodIbge.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601130055450_AlterTableCodIbge1.cs" />
+    <Compile Include="Migrations\201601130055450_AlterTableCodIbge1.Designer.cs">
+      <DependentUpon>201601130055450_AlterTableCodIbge1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StateRepository.cs" />
@@ -112,6 +124,15 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201601110341134_Initial.resx">
       <DependentUpon>201601110341134_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601130044479_AlterTable.resx">
+      <DependentUpon>201601130044479_AlterTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601130048224_AlterTableCodIbge.resx">
+      <DependentUpon>201601130048224_AlterTableCodIbge.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601130055450_AlterTableCodIbge1.resx">
+      <DependentUpon>201601130055450_AlterTableCodIbge1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

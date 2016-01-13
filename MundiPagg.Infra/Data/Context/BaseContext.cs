@@ -51,10 +51,8 @@ namespace MundiPagg.Infra.Data.Context
 
             if (ConfigurationManager.AppSettings["EntityFramework.Log.Enable"] != null)
             {
-                bool enable;
-
-                if (bool.TryParse(ConfigurationManager.AppSettings["EntityFramework.Log.Enable"].ToString(), out enable))
-                    enableLog = enable;
+                if (ConfigurationManager.AppSettings["EntityFramework.Log.Enable"].ToString() == "1")
+                    enableLog = true;
             }
 
             if (enableLog)

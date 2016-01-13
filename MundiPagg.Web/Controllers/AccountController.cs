@@ -1,4 +1,6 @@
-﻿using MundiPagg.Domain.Service.Interfaces;
+﻿using AutoMapper;
+using MundiPagg.Domain;
+using MundiPagg.Domain.Service.Interfaces;
 using MundiPagg.Web.ModelView;
 using Ninject;
 using System;
@@ -14,6 +16,13 @@ namespace MundiPagg.Web.Controllers
     {
         [Inject]
         public IStateService stateService
+        {
+            get;
+            set;
+        }
+
+        [Inject]
+        public ICustomerService customerService
         {
             get;
             set;
@@ -39,7 +48,16 @@ namespace MundiPagg.Web.Controllers
         [HttpPost]
         public ActionResult Save(CreateCustomerModelView model)
         {
-            return JsonSuccess();
+            try
+            {
+                Customer customer = model.ToDomain();
+                this.customerService.CreateCustomer(customer);
+                return JsonSuccess();
+            }
+            catch (System.Exception ex)
+            {
+                return JsonError(ex.Message);
+            }
         }
 
         

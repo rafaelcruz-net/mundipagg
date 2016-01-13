@@ -15,7 +15,7 @@ namespace MundiPagg.Domain
         public virtual String Genre { get; set; }
         public virtual String Email { get; set; }
         public virtual String Password { get; set; }
-        public virtual IList<CustomerAddress> Address { get; set; }
+        public virtual IList<CustomerAddress> Address { get; set; } = new List<CustomerAddress>();
 
     }
 }
