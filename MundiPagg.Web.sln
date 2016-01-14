@@ -15,6 +15,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MundiPagg.Infra", "MundiPag
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MundiPagg.Tests", "MundiPagg.Tests\MundiPagg.Tests.csproj", "{8C123C4A-75E9-4F72-9550-3B3FCE3188D8}"
 EndProject
+Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "MundiPagg.Cloud", "MundiPagg.Cloud\MundiPagg.Cloud.ccproj", "{AED5EB2D-196D-4400-93DA-7D39665AC6F3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MundiPagg.ProcessQueue", "MundiPagg.ProcessQueue\MundiPagg.ProcessQueue.csproj", "{DD8AD526-1DFD-4B79-B8E6-D2AF4079894E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +49,14 @@ Global
 		{8C123C4A-75E9-4F72-9550-3B3FCE3188D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8C123C4A-75E9-4F72-9550-3B3FCE3188D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8C123C4A-75E9-4F72-9550-3B3FCE3188D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AED5EB2D-196D-4400-93DA-7D39665AC6F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AED5EB2D-196D-4400-93DA-7D39665AC6F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AED5EB2D-196D-4400-93DA-7D39665AC6F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AED5EB2D-196D-4400-93DA-7D39665AC6F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD8AD526-1DFD-4B79-B8E6-D2AF4079894E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD8AD526-1DFD-4B79-B8E6-D2AF4079894E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD8AD526-1DFD-4B79-B8E6-D2AF4079894E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD8AD526-1DFD-4B79-B8E6-D2AF4079894E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

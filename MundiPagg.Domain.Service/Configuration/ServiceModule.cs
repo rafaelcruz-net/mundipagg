@@ -8,7 +8,7 @@ using Ninject.Extensions.Conventions;
 using Ninject.Web;
 using Ninject.Web.Mvc;
 using Ninject.Web.Common;
-
+using Ninject;
 
 namespace MundiPagg.Domain.Service.Configuration
 {
@@ -35,5 +35,6 @@ namespace MundiPagg.Domain.Service.Configuration
                            })
             );
         }
+        
     }
 }

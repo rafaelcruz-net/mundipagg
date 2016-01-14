@@ -1,5 +1,12 @@
 ﻿@{
-    var currrentUser = Membership.GetUser();
+
+    MembershipUser currentUser = null;
+
+    if (this.User.Identity.IsAuthenticated)
+    {
+        currentUser = Membership.GetUser();
+    }
+    
 }
 
 <!doctype html>
@@ -32,7 +39,7 @@
             {
                 <button class="button" type="button" data-toggle="example-dropdown-1">@this.User.Identity.Name</button>
                 <div class="dropdown-pane" id="example-dropdown-1" data-dropdown>
-                    <a style="color: #03a9f4;" href="/Ticket/@currrentUser.ProviderUserKey/History">Historico de Eventos</a>
+                    <a style="color: #03a9f4;" href="/Ticket/@currentUser.ProviderUserKey/History">Historico de Eventos</a>
                     <br />
                     <a style="color: #03a9f4;" href="/Account/Logout">Sair</a>
                 </div>

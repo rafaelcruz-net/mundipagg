@@ -131,10 +131,12 @@
     <Compile Include="Interfaces\ICustomerService.cs" />
     <Compile Include="Interfaces\ICustomerTicketService.cs" />
     <Compile Include="Interfaces\IEventService.cs" />
+    <Compile Include="Interfaces\IQueueProcessorService.cs" />
     <Compile Include="Interfaces\IStateService.cs" />
     <Compile Include="Membership\MembershipProvider.cs" />
     <Compile Include="MundiPagg\MundiPaggProxy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QueueProcessor\QueueProcessorService.cs" />
     <Compile Include="StateService.cs" />
   </ItemGroup>
   <ItemGroup>
