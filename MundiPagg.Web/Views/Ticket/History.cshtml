@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "History";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model IEnumerable<MundiPagg.Web.ModelView.TicketModelView>
+
+<div data-ng-controller="TicketController">
+    <div class="row" id="Step2">
+        <div class="row">
+            <div class="medium-12 columns">
+                <h3>Historico de Eventos</h3>
+            </div>
+        </div>
+        <div class="medium-12 columns">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nome do Evento</th>
+                        <th>Data do Evento</th>
+                        <th>Quantidade</th>
+                        <th>Valor</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Event.Name</td>
+                            <td>@item.DtEvent.ToString("dd/MM/yyyy")</td>
+                            <td>@item.Quantity</td>
+                            <td>R$ @item.Event.Price.ToString("N2")</td>
+                            <td>@item.Status.ToString()</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+

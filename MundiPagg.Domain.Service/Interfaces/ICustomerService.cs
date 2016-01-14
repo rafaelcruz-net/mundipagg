@@ -12,5 +12,8 @@ namespace MundiPagg.Domain.Service.Interfaces
         void LogOut();
         bool Login(string email, string password, bool rememberMe, bool needsEncryptPassword = true);
         Customer GetCustomerByEmailAndPassword(string username, string password);
+        Customer GetCustomerById(Guid customerId);
+        bool CreateTicket(CustomerTicket ticket, CustomerPayment payment, Customer customer);
+        Customer GetCustomerByEmail(string username);
     }
 }

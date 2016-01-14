@@ -196,6 +196,7 @@
     <Content Include="Scripts\app\mundipagg.main.js" />
     <Content Include="Scripts\app\services\accountService.js" />
     <Content Include="Scripts\app\services\stateService.js" />
+    <Content Include="Scripts\app\services\ticketService.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="bower.json" />
@@ -365,6 +366,7 @@
     <Content Include="Views\Account\Create.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Ticket\Index.cshtml" />
+    <Content Include="Views\Ticket\History.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

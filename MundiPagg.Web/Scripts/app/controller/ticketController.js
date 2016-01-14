@@ -6,15 +6,14 @@
     "jquery-mask-input"
 ], function ($, angular, _, datepicker) {
 
-    var ticketController = function ($scope) {
+    var ticketController = function ($scope, $ticketService) {
 
         angular.element(document).ready(function () {
             $("#Quantity").mask("9?9", { placeholder: "" });
             $("#DtEvent").datepicker();
-            $("#Expiration").mask("99/9999", { placeholder: "" });
+            $("#Expiration").mask("99/99", { placeholder: "" });
             $("#SecurityCode").mask("999?9", { placeholder: "" });
             $("#CreditCardNumber").mask("99999999999999", { placeholder: "", autoclear: false });
-
 
         });
 
@@ -31,10 +30,28 @@
             if (!form.validate())
                 return;
 
+            $scope.Ticket.EventId = $("#EventId").val();
 
+            $("button.button").attr("disabled", "disabled").html("Aguarde....");
+            $("#painelError").hide("slow");
 
+            $ticketService.create($scope.Ticket).success(function (data) {
+                if (data.success) {
+                    $("#painelSuccess").show("slow");
+                    $("#formStep2").hide();
+                }
+                else {
+                    $("#painelError").show("slow");
+                }
 
-        }
+                $("button.button").removeAttr("disabled").html("Finalizar");
+
+            }).error(function () {
+                $("#painelError").show("slow");
+                $("button.button").removeAttr("disabled").html("Finalizar");
+            });
+
+        };
 
         /*
         *  Regras de Validação do Primeiro Passo do Criação de Conta 
@@ -100,7 +117,7 @@
 
     };
 
-    ticketController.$inject = ["$scope"];
+    ticketController.$inject = ["$scope", "TicketService"];
     return ticketController;
 
 });

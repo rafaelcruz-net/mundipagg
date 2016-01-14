@@ -1,4 +1,8 @@
-﻿<!doctype html>
+﻿@{
+    var currrentUser = Membership.GetUser();
+}
+
+<!doctype html>
 <html class="no-js" lang="en">
 <head>
     <meta charset="utf-8" />
@@ -28,9 +32,9 @@
             {
                 <button class="button" type="button" data-toggle="example-dropdown-1">@this.User.Identity.Name</button>
                 <div class="dropdown-pane" id="example-dropdown-1" data-dropdown>
-                    <ul class="menu" style="background-color: transparent;">
-                        <li><a style="color: #03a9f4;" href="/Account/Logout">Sair</a></li>
-                    </ul>
+                    <a style="color: #03a9f4;" href="/Ticket/@currrentUser.ProviderUserKey/History">Historico de Eventos</a>
+                    <br />
+                    <a style="color: #03a9f4;" href="/Account/Logout">Sair</a>
                 </div>
             }
 

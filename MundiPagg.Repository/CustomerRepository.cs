@@ -29,5 +29,22 @@ namespace MundiPagg.Repository
         {
             base.Save(customer);
         }
+
+        public new void Update(Customer customer)
+        {
+            base.Update(customer);
+        }
+
+        public Customer GetCustomerById(Guid customerId)
+        {
+            return base.GetById(customerId);
+        }
+
+        public Customer GetCustomerByEmail(string username)
+        {
+            return (from x in this.DbSet
+                    where x.Email == username
+                    select x).FirstOrDefault();
+        }
     }
 }

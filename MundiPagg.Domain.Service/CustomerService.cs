@@ -16,11 +16,13 @@ namespace MundiPagg.Domain.Service
     public class CustomerService : ICustomerService
     {
         private readonly ICustomerRepository customerRepository;
+        private readonly ICustomerTicketService customerTicketService;
         ILog Log = log4net.LogManager.GetLogger("MundiPagg.Log");
 
-        public CustomerService(ICustomerRepository _repository)
+        public CustomerService(ICustomerRepository _repository, ICustomerTicketService _customerTicketService)
         {
             this.customerRepository = _repository;
+            this.customerTicketService = _customerTicketService;
         }
 
         public void CreateCustomer(Customer customer)
@@ -115,6 +117,78 @@ namespace MundiPagg.Domain.Service
         private bool ExistsCustomer(Customer customer)
         {
             return this.customerRepository.GetCustomerByCPF(customer.CPF) != null;
+        }
+
+        public Customer GetCustomerById(Guid customerId)
+        {
+            try
+            {
+                Log.Info($"Consultando o usuário com o id {customerId}");
+
+                return this.customerRepository.GetCustomerById(customerId);
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex.Message, ex);
+                throw;
+            }
+            finally
+            {
+                Log.Info($"Finalizando a consulta o usuário com o id {customerId}");
+            }
+
+
+        }
+
+        public bool CreateTicket(CustomerTicket ticket, CustomerPayment payment ,Customer customer)
+        {
+            try
+            {
+                Log.Info($"Criando o ticket do cliente com o id {customer.Id}");
+
+                ticket.Status = Enum.StatusEnum.Pending;
+                ticket.Id = Guid.NewGuid();
+
+                var result = this.customerTicketService.CreateTicket(ticket, payment, customer);
+
+                if (result)
+                {
+                    customer.Tickets.Add(ticket);
+                    this.customerRepository.Update(customer);
+                }
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex.Message, ex);
+                throw;
+            }
+            finally
+            {
+                Log.Info($"Finalizando a criação do ticket do evento para o cliente {customer.Id}");
+            }
+
+        }
+
+        public Customer GetCustomerByEmail(string username)
+        {
+            try
+            {
+                Log.Info($"Consultando o usuário com o id {username}");
+
+                return this.customerRepository.GetCustomerByEmail(username);
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex.Message, ex);
+                throw;
+            }
+            finally
+            {
+                Log.Info($"Finalizando a consulta o usuário com o id {username}");
+            }
+
         }
     }
 }

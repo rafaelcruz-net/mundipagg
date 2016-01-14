@@ -10,8 +10,12 @@ namespace MundiPagg.Repository.Interfaces
     public interface ICustomerRepository
     {
         Customer GetCustomerByCPF(string CPF);
-        void Save(Customer customer);
         Customer GetCustomerByEmailAndPassword(string email, string password);
+        Customer GetCustomerById(Guid customerId);
+        Customer GetCustomerByEmail(string username);
+        void Save(Customer customer);
+        void Update(Customer customer);
+
 
     }
 }

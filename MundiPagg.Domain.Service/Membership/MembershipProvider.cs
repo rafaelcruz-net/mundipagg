@@ -178,12 +178,23 @@ namespace MundiPagg.Domain.Service.Membership
             return true;
         }
 
+        public override MembershipUser GetUser(object providerUserKey, bool userIsOnline)
+        {
+            var user = this.customerService.GetCustomerById((Guid)providerUserKey);
+            return LoadMembershipUserFromUser(user);
+        }
+
+        public override MembershipUser GetUser(string username, bool userIsOnline)
+        {
+            var user = this.customerService.GetCustomerByEmail(username);
+            return LoadMembershipUserFromUser(user);
+        }
+
 
         private MembershipUser LoadMembershipUserFromUser(Customer user)
         {
-            const string providerName = "MundiPagg";
-
-            var result = new MembershipUser(providerName,
+            
+            var result = new MembershipUser(this.Name,
                                             user.Name,
                                             user.Id,
                                             user.Email,
@@ -300,16 +311,6 @@ namespace MundiPagg.Domain.Service.Membership
         }
 
         public override bool UnlockUser(string userName)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override MembershipUser GetUser(object providerUserKey, bool userIsOnline)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override MembershipUser GetUser(string username, bool userIsOnline)
         {
             throw new NotImplementedException();
         }

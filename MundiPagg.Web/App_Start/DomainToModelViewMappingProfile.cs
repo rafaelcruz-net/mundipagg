@@ -15,6 +15,7 @@ namespace MundiPagg.Web.App_Start
             Mapper.CreateMap<CustomerAddress, CreateCustomerAddressModelView>();
             Mapper.CreateMap<Customer, CreateCustomerModelView>();
             Mapper.CreateMap<Event, EventModelView>();
+            Mapper.CreateMap<CustomerTicket, TicketModelView>();
         }
 
     }

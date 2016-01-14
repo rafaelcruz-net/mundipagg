@@ -103,6 +103,10 @@
     <Compile Include="Migrations\201601140303394_Add_Tickets_Event_Table.Designer.cs">
       <DependentUpon>201601140303394_Add_Tickets_Event_Table.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201601140418295_AddStatusToCustomerTicket.cs" />
+    <Compile Include="Migrations\201601140418295_AddStatusToCustomerTicket.Designer.cs">
+      <DependentUpon>201601140418295_AddStatusToCustomerTicket.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StateRepository.cs" />
@@ -130,6 +134,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201601140303394_Add_Tickets_Event_Table.resx">
       <DependentUpon>201601140303394_Add_Tickets_Event_Table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601140418295_AddStatusToCustomerTicket.resx">
+      <DependentUpon>201601140418295_AddStatusToCustomerTicket.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

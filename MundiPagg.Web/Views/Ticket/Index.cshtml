@@ -8,7 +8,8 @@
 @section scripts {
     
     <script type="text/javascript">
-        require(["app/mundipagg.main", "app/controller/ticketController"], function (app, ticketController) {
+        require(["app/mundipagg.main", "app/services/ticketService", "app/controller/ticketController"], function (app, ticketService, ticketController) {
+            app.service("TicketService", ticketService);
             app.controller("TicketController", ticketController);
             angular.bootstrap(document, ["mundipagg_app"]);
         });
@@ -17,6 +18,9 @@
 }
 
 <div data-ng-controller="TicketController">
+
+    @Html.HiddenFor(x => x.Event.Id, new { name="EventId", @id="EventId" })
+
     <div class="row">
         <div class="medium-7 large-3 columns">
             <h5>@Model.Event.Name</h5>
@@ -53,6 +57,17 @@
                 <h3>Pagamento</h3>
             </div>
         </div>
+        <div class="row" style="display:none;" id="painelError">
+            <div class="callout primary">
+                <h3>Aconteceu um problema ao processar a transação, por favor tente denovo</h3>
+            </div>
+        </div>
+        <div class="row" style="display:none;" id="painelSuccess">
+            <div class="callout primary">
+                <h3>Prezado cliente, seu pagamento está sendo processado.</h3>
+            </div>
+        </div>
+
         <form name="formStep2" id="formStep2" ng-submit="doStepTwo(formStep2)" ng-validate="validationOptionsForPayment">
             <fieldset class="fieldset">
                 <div class="row">

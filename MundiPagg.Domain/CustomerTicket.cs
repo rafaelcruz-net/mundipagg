@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace MundiPagg.Domain
 {
+    [Serializable]
     public class CustomerTicket
     {
         public virtual Guid Id { get; set; }
