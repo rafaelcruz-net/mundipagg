@@ -80,12 +80,16 @@
     <Compile Include="Context\Interfaces\IRepositoryBase.cs" />
     <Compile Include="Context\RepositoryBase.cs" />
     <Compile Include="CustomerRepository.cs" />
+    <Compile Include="EventRepository.cs" />
     <Compile Include="Interfaces\ICityRepository.cs" />
     <Compile Include="Interfaces\ICustomerRepository.cs" />
+    <Compile Include="Interfaces\IEventRepository.cs" />
     <Compile Include="Interfaces\IStateRepository.cs" />
     <Compile Include="Mapping\CityMapping.cs" />
     <Compile Include="Mapping\CustomerAddressMapping.cs" />
     <Compile Include="Mapping\CustomerMapping.cs" />
+    <Compile Include="Mapping\CustomerTicketMapping.cs" />
+    <Compile Include="Mapping\EventMapping.cs" />
     <Compile Include="Mapping\StateMapping.cs" />
     <Compile Include="Migrations\201601110341134_Initial.cs" />
     <Compile Include="Migrations\201601110341134_Initial.Designer.cs">
@@ -95,13 +99,9 @@
     <Compile Include="Migrations\201601130044479_AlterTable.Designer.cs">
       <DependentUpon>201601130044479_AlterTable.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201601130048224_AlterTableCodIbge.cs" />
-    <Compile Include="Migrations\201601130048224_AlterTableCodIbge.Designer.cs">
-      <DependentUpon>201601130048224_AlterTableCodIbge.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201601130055450_AlterTableCodIbge1.cs" />
-    <Compile Include="Migrations\201601130055450_AlterTableCodIbge1.Designer.cs">
-      <DependentUpon>201601130055450_AlterTableCodIbge1.cs</DependentUpon>
+    <Compile Include="Migrations\201601140303394_Add_Tickets_Event_Table.cs" />
+    <Compile Include="Migrations\201601140303394_Add_Tickets_Event_Table.Designer.cs">
+      <DependentUpon>201601140303394_Add_Tickets_Event_Table.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -128,11 +128,8 @@
     <EmbeddedResource Include="Migrations\201601130044479_AlterTable.resx">
       <DependentUpon>201601130044479_AlterTable.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601130048224_AlterTableCodIbge.resx">
-      <DependentUpon>201601130048224_AlterTableCodIbge.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601130055450_AlterTableCodIbge1.resx">
-      <DependentUpon>201601130055450_AlterTableCodIbge1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201601140303394_Add_Tickets_Event_Table.resx">
+      <DependentUpon>201601140303394_Add_Tickets_Event_Table.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

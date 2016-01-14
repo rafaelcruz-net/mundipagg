@@ -11,6 +11,12 @@
             return $http.post(url, data);
         };
 
+        this.login = function (data) {
+            var url = "/account/login";
+            return $http.post(url, data);
+        };
+
+
     };
 
     accountService.$inject = ["$http"];

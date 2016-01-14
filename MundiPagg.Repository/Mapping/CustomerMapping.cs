@@ -23,7 +23,8 @@ namespace MundiPagg.Repository.Mapping
             this.Property(x => x.Genre).IsRequired().HasMaxLength(1);
             this.Property(x => x.Email).IsRequired().HasMaxLength(200);
 
-           // this.HasMany(x => x.Address).WithOptional().HasForeignKey(x => x.IdCustomer);
+            this.HasMany(x => x.Address).WithOptional().HasForeignKey(x => x.IdCustomer);
+            this.HasMany(x => x.Tickets).WithOptional().HasForeignKey(x => x.IdCustomer);
 
         }
 

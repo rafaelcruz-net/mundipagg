@@ -30,27 +30,18 @@ namespace MundiPagg.Web.ModelView
                 Password = this.Password
             };
 
-            //if (this.Address != null)
-            //{
-
-            //    customer.Address.Add(new CustomerAddress()
-            //    {
-            //        Address = this.Address.Address,
-            //        Cep = this.Address.Cep,
-            //        CityId = Convert.ToInt32(this.Address.City),
-            //        Complement = this.Address.Complement,
-            //        Neighbor = this.Address.Neighbor,
-            //        Number = this.Address.Number,
-            //        City = new City()
-            //        {
-            //            Id = Convert.ToInt32(this.Address.City),
-            //            State = new State()
-            //            {
-            //                UF = this.Address.State
-            //            }
-            //        }
-            //    });
-            //}
+            if (this.Address != null)
+            {
+                customer.Address.Add(new CustomerAddress()
+                {
+                    Address = this.Address.Address,
+                    Cep = this.Address.Cep,
+                    CityId = Convert.ToInt32(this.Address.City),
+                    Complement = this.Address.Complement,
+                    Neighbor = this.Address.Neighbor,
+                    Number = this.Address.Number,
+                });
+            }
 
             return customer;
         }

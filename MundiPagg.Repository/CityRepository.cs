@@ -11,7 +11,10 @@ namespace MundiPagg.Repository
 {
     public class CityRepository : RepositoryBase<City>, ICityRepository
     {
-
+        public City GetCityById(int id)
+        {
+            return base.GetById(id);
+        }
 
         public IEnumerable<City> GetCityByState(string uf)
         {

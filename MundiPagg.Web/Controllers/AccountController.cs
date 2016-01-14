@@ -11,11 +11,17 @@ using System.Web.Mvc;
 
 namespace MundiPagg.Web.Controllers
 {
-    [RoutePrefix("Account")]
     public class AccountController : Base.BaseController
     {
         [Inject]
         public IStateService stateService
+        {
+            get;
+            set;
+        }
+
+        [Inject]
+        public ICityService cityService
         {
             get;
             set;
@@ -32,7 +38,6 @@ namespace MundiPagg.Web.Controllers
         // GET: Login
         public ActionResult Create()
         {
-
             var states = this.stateService.GetAll();
 
             ViewBag.States = states.Select(x => new SelectListItem
@@ -44,13 +49,22 @@ namespace MundiPagg.Web.Controllers
             return View();
         }
 
-        [Route("Save")]
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+
         [HttpPost]
         public ActionResult Save(CreateCustomerModelView model)
         {
             try
             {
                 Customer customer = model.ToDomain();
+
+                var cityId = customer.Address.FirstOrDefault().CityId;
+                customer.Address.FirstOrDefault().City = this.cityService.GetCityById(cityId);
+
                 this.customerService.CreateCustomer(customer);
                 return JsonSuccess();
             }
@@ -59,6 +73,28 @@ namespace MundiPagg.Web.Controllers
                 return JsonError(ex.Message);
             }
         }
+
+        [HttpPost]
+        public ActionResult Login(LoginModelView model)
+        {
+            try
+            {
+                var result = this.customerService.Login(model.Email, model.Password, true);
+                return JsonSuccess<Boolean>(result);
+            }
+            catch (System.Exception ex)
+            {
+                return JsonError(ex.Message);
+            }
+        }
+
+
+        public ActionResult LogOut()
+        {
+            this.customerService.LogOut();
+            return RedirectToAction("Index", "Home");
+        }
+
 
         
     }

@@ -16,10 +16,24 @@
             </ul>
         </div>
         <div class="top-bar-right">
-            <ul class="menu">
-                <li><a class="secondary button" href="/Account/Create">Criar uma conta</a></li>
-                <li><a class="secondary hollow button white-text" href="#">Fazer Login</a></li>
-            </ul>
+
+            @if (!this.User.Identity.IsAuthenticated)
+            {
+                <ul class="menu">
+                    <li><a class="secondary button" href="/Account/Create">Criar uma conta</a></li>
+                    <li><a class="secondary hollow button white-text" href="/Account/Login">Fazer Login</a></li>
+                </ul>
+            }
+            else
+            {
+                <button class="button" type="button" data-toggle="example-dropdown-1">@this.User.Identity.Name</button>
+                <div class="dropdown-pane" id="example-dropdown-1" data-dropdown>
+                    <ul class="menu" style="background-color: transparent;">
+                        <li><a style="color: #03a9f4;" href="/Account/Logout">Sair</a></li>
+                    </ul>
+                </div>
+            }
+
         </div>
     </div>
     <br />
@@ -33,7 +47,7 @@
             </div>
         </div>
     </footer>
-    
+
     <script type="text/javascript" src="~/Scripts/vendor/requirejs/require.js"></script>
     <script type="text/javascript" src="~/Scripts/app/mundipagg.app.js"></script>
     @RenderSection("scripts", false)

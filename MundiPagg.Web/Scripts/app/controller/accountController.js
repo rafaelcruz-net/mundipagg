@@ -32,9 +32,38 @@
                 return;
 
             $accountService.create($scope.RegisterModel).success(function (data) {
+                $("#formStep2").fadeOut("slow", function () {
+                    $("#painelSuccess").show("slow");
+                    setTimeout(function () {
+                        location.href = "/";
+                    }, 5000)
+                });
 
             });
-        }
+        };
+
+        $scope.doLogin = function (form) {
+
+            if (!form.validate())
+                return;
+
+            $("button.button").attr("disabled", "disabled").html("Autenticando....");
+            $("#message-error").html("").hide();
+
+            $accountService.login($scope.Login).success(function (data) {
+
+                if (data.content)
+                    location.href = "/";
+                else
+                    $("#message-error").html("Email ou senha inválidos").show();
+
+                $("button.button").removeAttr("disabled").html("Entrar");
+
+            }).error(function () {
+                $("button.button").removeAttr("disabled").html("Entrar");
+            });
+
+        };
 
         $scope.loadCities = function (uf) {
 
@@ -156,6 +185,27 @@
                     required: "Selecione a cidade"
                 },
 
+            }
+        };
+
+        $scope.validationOptionsForLogin = {
+            rules: {
+                Email: {
+                    required: true,
+                    email: true,
+                },
+                Password: {
+                    required: true,
+                }
+            },
+            messages: {
+                Email: {
+                    required: "Digite seu Email",
+                    email: "Email não está em formato válido",
+                },
+                Password: {
+                    required: "Digite a senha",
+                },
             }
         };
 

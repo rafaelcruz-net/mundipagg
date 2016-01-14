@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace MundiPagg.Repository.Interfaces
 {
-    public interface ICityRepository
+    public interface IEventRepository
     {
-        IEnumerable<City> GetCityByState(string uf);
-        City GetCityById(int id);
+        List<Event> GetAll();
+        Event GetById(Guid ticketId);
     }
 }

@@ -8,30 +8,6 @@ namespace MundiPagg.Repository.Migrations
         public override void Up()
         {
             CreateTable(
-                "dbo.City",
-                c => new
-                    {
-                        CityId = c.Int(nullable: false, identity: false),
-                        Name = c.String(nullable: false, maxLength: 200),
-                        Uf = c.String(nullable: false, maxLength: 2),
-                        CodIbge = c.String(nullable: false, maxLength: 200),
-                        Area = c.String(nullable: false, maxLength: 200),
-                    })
-                .PrimaryKey(t => t.CityId)
-                .ForeignKey("dbo.State", t => t.Uf, cascadeDelete: true)
-                .Index(t => t.Uf);
-            
-            CreateTable(
-                "dbo.State",
-                c => new
-                    {
-                        UF = c.String(nullable: false, maxLength: 2),
-                        Name = c.String(nullable: false, maxLength: 200),
-                        CodIbge = c.String(nullable: false),
-                    })
-                .PrimaryKey(t => t.UF);
-            
-            CreateTable(
                 "dbo.CustomerAddress",
                 c => new
                     {
@@ -70,14 +46,10 @@ namespace MundiPagg.Repository.Migrations
         {
             DropForeignKey("dbo.CustomerAddress", "IdCustomer", "dbo.Customer");
             DropForeignKey("dbo.CustomerAddress", "CityId", "dbo.City");
-            DropForeignKey("dbo.City", "Uf", "dbo.State");
             DropIndex("dbo.CustomerAddress", new[] { "CityId" });
             DropIndex("dbo.CustomerAddress", new[] { "IdCustomer" });
-            DropIndex("dbo.City", new[] { "Uf" });
             DropTable("dbo.Customer");
             DropTable("dbo.CustomerAddress");
-            DropTable("dbo.State");
-            DropTable("dbo.City");
         }
     }
 }

@@ -1,0 +1,59 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model MundiPagg.Web.ModelView.LoginModelView
+
+@section scripts {
+
+   <script type="text/javascript">
+        require(["app/mundipagg.main", "app/services/stateService", "app/services/accountService", "app/controller/accountController"], function (app, stateService, accountService ,accountController) {
+            app.service("StateService", stateService);
+            app.service("AccountService", accountService);
+            app.controller("AccountController", accountController);
+            angular.bootstrap(document, ["mundipagg_app"]);
+        });
+</script>
+
+
+}
+<div data-ng-controller="AccountController">
+    <div class="row">
+        <div class="medium-12 columns">
+            <h3>Fazer Login em sua Conta</h3>
+            <p>Faça login em sua conta e começe a disfrutar de cinema, eventos e teatro</p>
+        </div>
+    </div>
+    <div class="row">
+        <form name="formLogin" id="formLogin" ng-submit="doLogin(formLogin)" ng-validate="validationOptionsForLogin">
+            <fieldset class="fieldset">
+                <div class="row">
+                    <span class="alert label" id="message-error" style="display:none;"></span>
+                </div>
+                <div class="row">
+                    <div class="small-2 columns">
+                        <label for="Name" class="middle">Email</label>
+                    </div>
+                    <div class="small-10 columns">
+                        @Html.TextBoxFor(x => x.Email, new { placeholder = "Email", @ng_model = "Login.Email" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="small-2 columns">
+                        <label for="CPF" class="middle">Senha</label>
+                    </div>
+                    <div class="small-10 columns">
+                        @Html.PasswordFor(x => x.Password, new { placeholder = "Password", @ng_model = "Login.Password" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="small-2 columns small-offset-10">
+                        <button class="secondary button float-right">Entrar</button>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+  
+    </div>
+  
+</div>

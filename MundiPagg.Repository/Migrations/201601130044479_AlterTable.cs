@@ -11,6 +11,7 @@ namespace MundiPagg.Repository.Migrations
             AlterColumn("dbo.City", "CodIbge", c => c.String(maxLength: 200));
             AlterColumn("dbo.City", "Area", c => c.String(maxLength: 200));
             AlterColumn("dbo.State", "Name", c => c.String(maxLength: 200));
+            AlterColumn("dbo.State", "CodIbge", c => c.String());
         }
         
         public override void Down()
@@ -19,6 +20,8 @@ namespace MundiPagg.Repository.Migrations
             AlterColumn("dbo.City", "Area", c => c.String(nullable: false, maxLength: 200));
             AlterColumn("dbo.City", "CodIbge", c => c.String(nullable: false, maxLength: 200));
             AlterColumn("dbo.City", "Name", c => c.String(nullable: false, maxLength: 200));
+            AlterColumn("dbo.State", "CodIbge", c => c.String(nullable: false));
         }
+
     }
 }

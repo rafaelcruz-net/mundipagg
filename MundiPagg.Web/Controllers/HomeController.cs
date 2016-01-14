@@ -1,4 +1,9 @@
-﻿using System;
+﻿using AutoMapper;
+using MundiPagg.Domain;
+using MundiPagg.Domain.Service.Interfaces;
+using MundiPagg.Web.ModelView;
+using Ninject;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,23 +13,21 @@ namespace MundiPagg.Web.Controllers
 {
     public class HomeController : Base.BaseController
     {
+        [Inject]
+        public IEventService eventService
+        {
+            get;
+            set;
+        }
+
         public ActionResult Index()
         {
-            return View();
+            var events = this.eventService.GetAll();
+
+            var eventViewModel = events.Select(x => Mapper.Map<Event, EventModelView>(x));
+
+            return View(eventViewModel);
         }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
     }
 }

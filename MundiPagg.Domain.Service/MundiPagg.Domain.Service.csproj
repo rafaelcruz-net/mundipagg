@@ -104,9 +104,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CityService.cs" />
     <Compile Include="Configuration\ServiceModule.cs" />
     <Compile Include="CustomerService.cs" />
+    <Compile Include="EventService.cs" />
+    <Compile Include="Interfaces\ICityService.cs" />
     <Compile Include="Interfaces\ICustomerService.cs" />
+    <Compile Include="Interfaces\IEventService.cs" />
     <Compile Include="Interfaces\IStateService.cs" />
     <Compile Include="Membership\MembershipProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

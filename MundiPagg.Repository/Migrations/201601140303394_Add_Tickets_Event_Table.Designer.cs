@@ -7,13 +7,13 @@ namespace MundiPagg.Repository.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class AlterTableCodIbge1 : IMigrationMetadata
+    public sealed partial class Add_Tickets_Event_Table : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AlterTableCodIbge1));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Add_Tickets_Event_Table));
         
         string IMigrationMetadata.Id
         {
-            get { return "201601130055450_AlterTableCodIbge1"; }
+            get { return "201601140303394_Add_Tickets_Event_Table"; }
         }
         
         string IMigrationMetadata.Source

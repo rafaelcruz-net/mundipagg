@@ -1,0 +1,39 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model MundiPagg.Web.ModelView.TicketModelView
+
+
+<div class="row">
+    <div class="medium-7 large-3 columns">
+        <h5>@Model.Event.Name</h5>
+        <p class="subheader">R$ @Model.Event.Price.ToString("N2")</p>
+    </div>
+    <div class="show-for-large large-4 columns">
+        <img src="@Model.Event.Picture" style="max-width: 250px; padding: 0px 5px 20px 0px;" alt="picture of space">
+    </div>
+    <div class="medium-5 large-5 columns">
+        <div class="callout secondary">
+            <form>
+                <div class="row">
+                    <div class="small-12 columns">
+                        <label>
+                            Quantidate
+                            <input type="text" placeholder="Quantidade">
+                        </label>
+                    </div>
+                    <div class="small-12 columns">
+                        <label>
+                            Para qual data ?
+                            <input type="number" placeholder="Escolha a data">
+                        </label>
+                        <button type="submit" class="button">Comprar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
