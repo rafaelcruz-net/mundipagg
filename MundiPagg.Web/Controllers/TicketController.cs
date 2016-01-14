@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using MundiPagg.Domain;
+using MundiPagg.Domain.Enum;
 using MundiPagg.Domain.Service.Interfaces;
+using MundiPagg.Infra.Utils;
 using MundiPagg.Web.ModelView;
 using Ninject;
 using System;
@@ -28,6 +30,15 @@ namespace MundiPagg.Web.Controllers
         {
             var eventDomain = this.eventService.GetById(ticketId);
             var eventModelView = Mapper.Map<Event, EventModelView>(eventDomain);
+
+            var enumSource = EnumerationUtils.GetAll<CreditCardBrandEnum>();
+
+            ViewBag.CreditCardBrandEnum = enumSource.Select(x => new SelectListItem
+            {
+                Text = x.Value,
+                Value = x.Key.ToString()
+            });
+
             TicketModelView ticket = new TicketModelView()
             {
                 Event = eventModelView

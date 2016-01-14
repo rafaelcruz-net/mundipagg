@@ -5,35 +5,102 @@
 
 @model MundiPagg.Web.ModelView.TicketModelView
 
+@section scripts {
+    
+    <script type="text/javascript">
+        require(["app/mundipagg.main", "app/controller/ticketController"], function (app, ticketController) {
+            app.controller("TicketController", ticketController);
+            angular.bootstrap(document, ["mundipagg_app"]);
+        });
+    </script>
 
-<div class="row">
-    <div class="medium-7 large-3 columns">
-        <h5>@Model.Event.Name</h5>
-        <p class="subheader">R$ @Model.Event.Price.ToString("N2")</p>
-    </div>
-    <div class="show-for-large large-4 columns">
-        <img src="@Model.Event.Picture" style="max-width: 250px; padding: 0px 5px 20px 0px;" alt="picture of space">
-    </div>
-    <div class="medium-5 large-5 columns">
-        <div class="callout secondary">
-            <form>
-                <div class="row">
-                    <div class="small-12 columns">
-                        <label>
-                            Quantidate
-                            <input type="text" placeholder="Quantidade">
-                        </label>
+}
+
+<div data-ng-controller="TicketController">
+    <div class="row">
+        <div class="medium-7 large-3 columns">
+            <h5>@Model.Event.Name</h5>
+            <p class="subheader">R$ @Model.Event.Price.ToString("N2")</p>
+        </div>
+        <div class="show-for-large large-4 columns">
+            <img src="@Model.Event.Picture" style="max-width: 250px; padding: 0px 5px 20px 0px;" alt="picture of space">
+        </div>
+        <div class="medium-5 large-5 columns">
+            <div class="callout secondary">
+                <form name="formStep1" id="formStep1" ng-submit="doStepOne(formStep1)" ng-validate="validationOptions">
+                    <div class="row">
+                        <div class="small-12 columns">
+                            <label>
+                                Quantidade
+                                @Html.TextBoxFor(x => x.Quantity, new { placeholder = "Quantidade", @ng_model = "Ticket.Quantity" })
+                            </label>
+                        </div>
+                        <div class="small-12 columns">
+                            <label>
+                                Para qual data ?
+                                @Html.TextBoxFor(x => x.DtEvent, new { placeholder = "Data", @ng_model = "Ticket.DtEvent", @readonly = "readonly" })
+                            </label>
+                            <button type="submit" class="button">Comprar</button>
+                        </div>
                     </div>
-                    <div class="small-12 columns">
-                        <label>
-                            Para qual data ?
-                            <input type="number" placeholder="Escolha a data">
-                        </label>
-                        <button type="submit" class="button">Comprar</button>
-                    </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
     </div>
+    <div class="row" id="Step2" style="display:none">
+        <div class="row">
+            <div class="medium-12 columns">
+                <h3>Pagamento</h3>
+            </div>
+        </div>
+        <form name="formStep2" id="formStep2" ng-submit="doStepTwo(formStep2)" ng-validate="validationOptionsForPayment">
+            <fieldset class="fieldset">
+                <div class="row">
+                    <div class="small-2 columns">
+                        <label for="Name" class="middle">Bandeira </label>
+                    </div>
+                    <div class="small-10 columns">
+                        @Html.DropDownListFor(x => x.CreditCardBrand, (IEnumerable<SelectListItem>)ViewBag.CreditCardBrandEnum, "Selecione", new { placeholder = "Bandeira", @ng_model = "Ticket.CreditCardBrand" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="small-2 columns">
+                        <label for="Name" class="middle">Nome (Nome como está escrito no cartão de credito) </label>
+                    </div>
+                    <div class="small-10 columns">
+                        @Html.TextBoxFor(x => x.HolderName, new { placeholder = "Nome", @ng_model = "Ticket.HolderName" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="small-2 columns">
+                        <label for="CPF" class="middle">Número do Cartão</label>
+                    </div>
+                    <div class="small-10 columns">
+                        @Html.TextBoxFor(x => x.CreditCardNumber, new { placeholder = "Número do Cartão", @ng_model = "Ticket.CreditCardNumber" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="small-2 columns">
+                        <label for="Email" class="middle">Código de Segurança</label>
+                    </div>
+                    <div class="small-10 columns">
+                        @Html.TextBoxFor(x => x.SecurityCode, new { placeholder = "CVV", @ng_model = "Ticket.SecurityCode" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="small-2 columns">
+                        <label for="Birthday" class="middle">Ano e Mês da Expiração</label>
+                    </div>
+                    <div class="small-10 columns">
+                        @Html.TextBoxFor(x => x.Expiration, new { placeholder = "Expiração", @ng_model = "Ticket.Expiration" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="small-2 columns small-offset-10">
+                        <button class="secondary button float-right">Finalizar</button>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
 </div>
-

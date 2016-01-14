@@ -191,6 +191,7 @@
     <Content Include="Global.asax" />
     <Content Include="gruntfile.js" />
     <Content Include="Scripts\app\controller\accountController.js" />
+    <Content Include="Scripts\app\controller\ticketController.js" />
     <Content Include="Scripts\app\mundipagg.app.js" />
     <Content Include="Scripts\app\mundipagg.main.js" />
     <Content Include="Scripts\app\services\accountService.js" />

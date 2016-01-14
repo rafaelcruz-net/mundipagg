@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MundiPagg.Domain.Enum;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,5 +15,6 @@ namespace MundiPagg.Domain
         public virtual DateTime DtEvent { get; set; }
         public virtual int Quantity { get; set; }
         public virtual Guid IdCustomer { get; set; }
+        public virtual StatusEnum Status { get; set; } 
     }
 }
