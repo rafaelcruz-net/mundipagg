@@ -24,6 +24,10 @@
         </div>
     </div>
     <div class="row">
+        @Html.AntiForgeryToken()
+        
+        <label id="error" class="error" ng-repeat="error in errors">{{ error }}</label>
+
         <form name="formStep1" id="formStep1" ng-submit="doStepOne(formStep1)" ng-validate="validationOptions">
             <fieldset class="fieldset">
                 <div class="row">
@@ -158,8 +162,8 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="small-2 columns small-offset-10">
-                        <button class="secondary button float-right">Criar Conta</button>
+                    <div class="small-4 columns small-offset-8">
+                        <button class="secondary button float-right btn-criar">Criar Conta</button>&nbsp;<a href="#" ng-click="backtoStepOne($event);" class="button float-right btn-voltar" style="margin-right: 10px;">Voltar</a>
                     </div>
                 </div>
             </fieldset>

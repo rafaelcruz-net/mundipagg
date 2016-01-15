@@ -5,7 +5,9 @@
     'ngValidate'
 ], function ($, angular, _) {
 
-    var configuration = function ($validatorProvider) {
+    var configuration = function ($validatorProvider, $httpProvider) {
+
+
         $validatorProvider.addMethod("cpf", function (value, element) {
             value = jQuery.trim(value);
             value = value.replace('.', '');
@@ -39,6 +41,8 @@
         }, "Senha deve ter de 6 a 10 letras e só pode conter letras, números ou os caracteres @, #, %, $, !, &, *");
 
     }
+
+    configuration.$inject = ['$validatorProvider', '$httpProvider'];
 
     var app = angular.module('mundipagg_app', ['ngValidate']).config(configuration);
     return app;

@@ -3,6 +3,7 @@ using MundiPagg.Domain;
 using MundiPagg.Domain.Enum;
 using MundiPagg.Domain.Service.Interfaces;
 using MundiPagg.Infra.Utils;
+using MundiPagg.Web.Controllers.Filters;
 using MundiPagg.Web.ModelView;
 using Ninject;
 using System;
@@ -97,6 +98,7 @@ namespace MundiPagg.Web.Controllers
 
         [Route("Save")]
         [HttpPost]
+        [AntiForgeryTokenForAjax]
         public ActionResult Save(TicketModelView model)
         {
             try
@@ -131,6 +133,7 @@ namespace MundiPagg.Web.Controllers
 
         [Route("SaveQuick")]
         [HttpPost]
+        [AntiForgeryTokenForAjax]
         public ActionResult SaveQuick(TicketModelView model)
         {
             try

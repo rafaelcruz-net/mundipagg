@@ -6,14 +6,14 @@
 
 @section scripts {
 
-   <script type="text/javascript">
-        require(["app/mundipagg.main", "app/services/stateService", "app/services/accountService", "app/controller/accountController"], function (app, stateService, accountService ,accountController) {
+    <script type="text/javascript">
+        require(["app/mundipagg.main", "app/services/stateService", "app/services/accountService", "app/controller/accountController"], function (app, stateService, accountService, accountController) {
             app.service("StateService", stateService);
             app.service("AccountService", accountService);
             app.controller("AccountController", accountController);
             angular.bootstrap(document, ["mundipagg_app"]);
         });
-</script>
+    </script>
 
 
 }
@@ -25,6 +25,7 @@
         </div>
     </div>
     <div class="row">
+        @Html.AntiForgeryToken()
         <form name="formLogin" id="formLogin" ng-submit="doLogin(formLogin)" ng-validate="validationOptionsForLogin">
             <fieldset class="fieldset">
                 <div class="row">
@@ -53,7 +54,7 @@
                 </div>
             </fieldset>
         </form>
-  
+
     </div>
-  
+
 </div>

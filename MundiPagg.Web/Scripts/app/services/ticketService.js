@@ -8,12 +8,26 @@
 
         this.create = function (data) {
             var url = "/ticket/save";
-            return $http.post(url, data);
+            return $http({
+                method: 'POST',
+                url: url,
+                headers: {
+                    'X-CSRFToken': $("input[name='__RequestVerificationToken']").length > 0 ? $("input[name='__RequestVerificationToken']").val() : ""
+                },
+                data: data
+            });
         };
 
         this.createQuick = function (data) {
             var url = "/ticket/saveQuick";
-            return $http.post(url, data);
+            return $http({
+                method: 'POST',
+                url: url,
+                headers: {
+                    'X-CSRFToken': $("input[name='__RequestVerificationToken']").length > 0 ? $("input[name='__RequestVerificationToken']").val() : ""
+                },
+                data: data
+            });
         }
 
     };

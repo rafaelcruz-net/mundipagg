@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using MundiPagg.Domain;
 using MundiPagg.Domain.Service.Interfaces;
+using MundiPagg.Web.Controllers.Filters;
 using MundiPagg.Web.ModelView;
 using Ninject;
 using System;
@@ -56,6 +57,7 @@ namespace MundiPagg.Web.Controllers
 
 
         [HttpPost]
+        [AntiForgeryTokenForAjax]
         public ActionResult Save(CreateCustomerModelView model)
         {
             try
@@ -75,6 +77,7 @@ namespace MundiPagg.Web.Controllers
         }
 
         [HttpPost]
+        [AntiForgeryTokenForAjax]
         public ActionResult Login(LoginModelView model)
         {
             try

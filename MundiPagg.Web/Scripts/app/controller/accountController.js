@@ -3,9 +3,9 @@
     'angular',
     'underscore',
     "datepicker-i18n",
-    "jquery-mask-input"  
+    "jquery-mask-input"
 ], function ($, angular, _, datepicker) {
-    
+
     var accountController = function ($scope, $stateService, $accountService) {
 
         angular.element(document).ready(function () {
@@ -31,14 +31,37 @@
             if (!form.validate())
                 return;
 
-            $accountService.create($scope.RegisterModel).success(function (data) {
+            $("button.btn-criar").attr("disabled", "disabled").html("Aguarde...");
+            $("a.btn-volta").attr("disabled", "disabled")
+
+            $scope.errors = [];
+
+            $accountService.create($scope.RegisterModel).then(function (data) {
                 $("#formStep2").fadeOut("slow", function () {
                     $("#painelSuccess").show("slow");
                     setTimeout(function () {
                         location.href = "/";
                     }, 5000)
-                });
+                })
 
+            }, function (response) {
+                if (response.data) {
+                    if (response.data.errorMessages)
+                    {
+                        $scope.errors = response.data.errorMessages
+                    }
+                }
+
+                $("button.btn-criar").removeAttr("disabled", "disabled").html("Criar Conta");
+                $("a.btn-volta").removeAttr("disabled", "disabled");
+            });
+
+        };
+
+        $scope.backtoStepOne = function ($event) {
+            $event.preventDefault();
+            $("#formStep2").fadeOut("slow", function () {
+                $("#formStep1").fadeIn("slow");
             });
         };
 
@@ -150,7 +173,7 @@
                     required: true
                 },
                 Address: {
-                   required: true
+                    required: true
                 },
                 Complement: {
                     required: true
