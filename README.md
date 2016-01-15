@@ -1,4 +1,6 @@
-Mini Mundo -> Criar um solução de processamente de Evento como Cinema, Teatro e Eventos em Gerais utilizando a API do MundiPagg
+# Mundi Pagg
+
+Mini Mundo -> Criar um solução de processamente do Evento como Cinema, Teatro e Eventos em Gerais utilizando a API do MundiPagg
 
 # Tecnologias Utilizada Front End
  - Foundation Framework
@@ -9,7 +11,7 @@ Mini Mundo -> Criar um solução de processamente de Evento como Cinema, Teatro 
  - RequireJS
  - Angular
 
-#Tecnologia Utilizada BackEnd
+# Tecnologia Utilizada BackEnd
   - ASP.NET MVC 5
   - Ninject
   - Entity Framework
@@ -19,16 +21,17 @@ Mini Mundo -> Criar um solução de processamente de Evento como Cinema, Teatro 
   - Autommaper
   - Azure Service Bus
   - Azure WorkRole Process Queue
+  - Azure SQL Server As a Service
   - SendGrid
 
-#Tecnologia Utilizada WebApi
+# Tecnologia Utilizada WebApi
   - ASP.NET Web Api
   - Ninject
   - Entity Framework
   - Log4NET
   - Swagger
 
-#Pontos a serem destacados
+# Pontos a serem destacados
   - Arquitetura Solid
   - Elmah - Para log de Eventos Web
   - Log4Net - Para log de Execução
@@ -37,5 +40,3 @@ Mini Mundo -> Criar um solução de processamente de Evento como Cinema, Teatro 
   - Validação CSRF
   - Padronização de Resposta Json
   - Padronização de Mensagem da Fila
-
-
