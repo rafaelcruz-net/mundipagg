@@ -32,7 +32,7 @@ Criar um solução de processamente do Evento como Cinema, Teatro e Eventos em G
   - Swagger
 
 # Pontos a serem destacados
-  - Arquitetura Solid
+  - Arquitetura Domain Drive Design
   - Elmah - Para log de Eventos Web
   - Log4Net - Para log de Execução
   - Processamento de Fila Async (Azure Service Bus Queue)
