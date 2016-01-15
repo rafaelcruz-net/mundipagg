@@ -17,6 +17,8 @@ namespace MundiPagg.Domain
         public virtual String Password { get; set; }
         public virtual IList<CustomerAddress> Address { get; set; } = new List<CustomerAddress>();
         public virtual IList<CustomerTicket> Tickets { get; set; } = new List<CustomerTicket>();
+        public virtual IList<CustomerPaymentTokenizer> PaymentTokenizer { get; set; } = new List<CustomerPaymentTokenizer>();
+
 
     }
 }

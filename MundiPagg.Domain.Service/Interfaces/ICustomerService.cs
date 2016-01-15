@@ -15,5 +15,7 @@ namespace MundiPagg.Domain.Service.Interfaces
         Customer GetCustomerById(Guid customerId);
         bool CreateTicket(CustomerTicket ticket, CustomerPayment payment, Customer customer);
         Customer GetCustomerByEmail(string username);
+        void Update(Customer customer);
+        bool CreateQuickTicket(CustomerTicket ticket, CustomerPayment customerPayment, Customer customer);
     }
 }

@@ -17,5 +17,6 @@ namespace MundiPagg.Domain
         public virtual int Quantity { get; set; }
         public virtual Guid IdCustomer { get; set; }
         public virtual StatusEnum Status { get; set; } 
+
     }
 }

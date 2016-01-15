@@ -15,5 +15,7 @@ namespace MundiPagg.Domain
         public String SecurityCode { get; set; }
         public String HolderName { get; set; }
         public CreditCardBrandEnum CreditCardBrand { get; set;}
+        public bool KeepSave { get; set; }
+        public Guid InstantBuy { get; set; }
     }
 }

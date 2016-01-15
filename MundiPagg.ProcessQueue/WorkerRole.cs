@@ -36,8 +36,6 @@ namespace MundiPagg.ProcessQueue
 
             OnMessageOptions options = new OnMessageOptions();
             options.AutoComplete = false; 
-            options.MaxConcurrentCalls = 5; 
-
             Client.OnMessage((receivedMessage) =>
             {
                 try
@@ -52,14 +50,13 @@ namespace MundiPagg.ProcessQueue
             }, options);
 
             CompletedEvent.WaitOne();
+
+            Trace.WriteLine("Ending processing of messages");
         }
 
 
         public override bool OnStart()
         {
-            ServicePointManager.DefaultConnectionLimit = 12;
-
-            
             //Starting Kernel
             Trace.TraceInformation("Starting Kernel");
             IKernel kernel = new StandardKernel();
@@ -108,7 +105,7 @@ namespace MundiPagg.ProcessQueue
                 assembly.GetTypes()
                         .Where(x => x.IsSubclassOf(typeof(NinjectModule))).ToList().ForEach(x =>
                         {
-                            var t = (NinjectModule)Activator.CreateInstance(x, new object[] { true });
+                            var t = (NinjectModule)Activator.CreateInstance(x, new object[] { false });
                             kernel.Load(t);
                         });
             }

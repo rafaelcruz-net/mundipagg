@@ -17,6 +17,8 @@ namespace MundiPagg.Web.ModelView
         public String Expiration { get; set; }
         public String SecurityCode { get; set; }
         public String HolderName { get; set; }
-        public StatusEnum Status { get; internal set; }
+        public StatusEnum Status { get; set; }
+        public Boolean KeepSave { get; set; }
+        public string PaymentToken { get; set; }
     }
 }

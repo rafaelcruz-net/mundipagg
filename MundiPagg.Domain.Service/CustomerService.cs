@@ -111,12 +111,39 @@ namespace MundiPagg.Domain.Service
 
         public Customer GetCustomerByEmailAndPassword(string email, string password)
         {
-            return this.customerRepository.GetCustomerByEmailAndPassword(email, password);
+            try
+            {
+                Log.Info($"Consultando o usuário com o email {email}");
+                return this.customerRepository.GetCustomerByEmailAndPassword(email,password);
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex.Message, ex);
+                throw;
+            }
+            finally
+            {
+                Log.Info($"Finalizando a consulta o usuário com o id {email}");
+            }
+
         }
 
         private bool ExistsCustomer(Customer customer)
         {
-            return this.customerRepository.GetCustomerByCPF(customer.CPF) != null;
+            try
+            {
+                Log.Info($"Consultando o usuário com o CPF {customer.CPF}");
+                return this.customerRepository.GetCustomerByCPF(customer.CPF) != null;
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex.Message, ex);
+                throw;
+            }
+            finally
+            {
+                Log.Info($"Finalizando a consulta o usuário com o CPF {customer.CPF}");
+            }
         }
 
         public Customer GetCustomerById(Guid customerId)
@@ -187,6 +214,56 @@ namespace MundiPagg.Domain.Service
             finally
             {
                 Log.Info($"Finalizando a consulta o usuário com o id {username}");
+            }
+
+        }
+
+        public void Update(Customer customer)
+        {
+            try
+            {
+                Log.Info($"Atualizando o usuário com o id {customer.Id}");
+                this.customerRepository.Update(customer);
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex.Message, ex);
+                throw;
+            }
+            finally
+            {
+                Log.Info($"Finalizando a atualização o usuário com o id {customer.Id}");
+            }
+
+        }
+
+        public bool CreateQuickTicket(CustomerTicket ticket, CustomerPayment payment, Customer customer)
+        {
+            try
+            {
+                Log.Info($"Criando o ticket do cliente com o id {customer.Id}");
+
+                ticket.Status = Enum.StatusEnum.Pending;
+                ticket.Id = Guid.NewGuid();
+
+                var result = this.customerTicketService.CreateQuickTicket(ticket, payment, customer);
+
+                if (result)
+                {
+                    customer.Tickets.Add(ticket);
+                    this.customerRepository.Update(customer);
+                }
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex.Message, ex);
+                throw;
+            }
+            finally
+            {
+                Log.Info($"Finalizando a criação do ticket do evento para o cliente {customer.Id}");
             }
 
         }

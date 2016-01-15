@@ -29,10 +29,20 @@ namespace MundiPagg.Repository.Configuration
 
         public override void Load()
         {
-            Bind<DbContext>().ToSelf().InThreadScope();
-            Bind(typeof(IDbContext)).To(typeof(MundiPaggContext)).InThreadScope();
-            Bind(typeof(IRepositoryBase<>)).To(typeof(RepositoryBase<>)).InRequestScope();
 
+            if (isInHttpContext)
+            {
+                Bind<DbContext>().ToSelf().InRequestScope();
+                Bind(typeof(IDbContext)).To(typeof(MundiPaggContext)).InRequestScope();
+                Bind(typeof(IRepositoryBase<>)).To(typeof(RepositoryBase<>)).InRequestScope();
+            }
+            else
+            {
+                Bind<DbContext>().ToSelf().InSingletonScope();
+                Bind(typeof(IDbContext)).To(typeof(MundiPaggContext)).InSingletonScope();
+                Bind(typeof(IRepositoryBase<>)).To(typeof(RepositoryBase<>)).InThreadScope();
+            }
+            
 
             this.Bind(x => x.FromThisAssembly()
                             .SelectAllClasses()

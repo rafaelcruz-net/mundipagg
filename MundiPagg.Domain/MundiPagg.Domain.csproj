@@ -44,6 +44,7 @@
     <Compile Include="CustomerAddress.cs" />
     <Compile Include="Customer.cs" />
     <Compile Include="CustomerPayment.cs" />
+    <Compile Include="CustomerPaymentTokenizer.cs" />
     <Compile Include="CustomerTicket.cs" />
     <Compile Include="Enum\CreditCardBrandEnum.cs" />
     <Compile Include="Enum\StatusEnum.cs" />

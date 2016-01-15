@@ -124,10 +124,12 @@
   <ItemGroup>
     <Compile Include="CityService.cs" />
     <Compile Include="Configuration\ServiceModule.cs" />
+    <Compile Include="CustomerPaymentService.cs" />
     <Compile Include="CustomerService.cs" />
     <Compile Include="CustomerTicketService.cs" />
     <Compile Include="EventService.cs" />
     <Compile Include="Interfaces\ICityService.cs" />
+    <Compile Include="Interfaces\ICustomerPaymentService.cs" />
     <Compile Include="Interfaces\ICustomerService.cs" />
     <Compile Include="Interfaces\ICustomerTicketService.cs" />
     <Compile Include="Interfaces\IEventService.cs" />
@@ -156,6 +158,9 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+    <EmbeddedResource Include="QueueProcessor\TemplateEmail\email-usuario-new-ticket-update.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

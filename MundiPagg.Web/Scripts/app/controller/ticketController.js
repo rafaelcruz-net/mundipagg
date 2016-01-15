@@ -32,7 +32,7 @@
 
             $scope.Ticket.EventId = $("#EventId").val();
 
-            $("button.button").attr("disabled", "disabled").html("Aguarde....");
+            $("button.button-save").attr("disabled", "disabled").html("Aguarde....");
             $("#painelError").hide("slow");
 
             $ticketService.create($scope.Ticket).success(function (data) {
@@ -44,14 +44,50 @@
                     $("#painelError").show("slow");
                 }
 
-                $("button.button").removeAttr("disabled").html("Finalizar");
+                $("button.button-save").removeAttr("disabled").html("Finalizar");
 
             }).error(function () {
                 $("#painelError").show("slow");
-                $("button.button").removeAttr("disabled").html("Finalizar");
+                $("button.button-save").removeAttr("disabled").html("Finalizar");
             });
 
         };
+
+        $scope.doBuyByOneClick = function ($event, form) {
+
+            if (!form.validate())
+                return
+
+            var data = {
+                DtEvent: $scope.Ticket.DtEvent,
+                PaymentToken: $scope.Ticket.PaymentToken,
+                Quantity: $scope.Ticket.Quantity,
+                EventId: $("#EventId").val()
+            };
+
+            $("button.btn-comprar").attr("disabled", "disabled");
+            $("a.btn-comprar-quick").attr("disabled", "disabled").html("Aguarde...");
+
+
+            $ticketService.createQuick(data).success(function (data) {
+
+                if (data.success) {
+                    $("#painelSuccessQuick").show("slow");
+                }
+                else {
+                    $("#painelErrorQuick").show("slow");
+                }
+
+                $("button.btn-comprar").removeAttr("disabled", "disabled");
+                $("a.btn-comprar-quick").removeAttr("disabled", "disabled").html("Comprar com 1 Click");
+                
+            }).error(function () {
+                $("#painelErrorQuick").show("slow");
+                $("button.btn-comprar").removeAttr("disabled", "disabled");
+                $("a.btn-comprar-quick").removeAttr("disabled", "disabled");
+            });
+
+        }
 
         /*
         *  Regras de Validação do Primeiro Passo do Criação de Conta 
@@ -65,6 +101,9 @@
                 DtEvent: {
                     required: true,
                 },
+                PaymentToken: {
+                    required: true,
+                }
             },
             messages: {
                 Quantity: {
@@ -73,6 +112,10 @@
                 DtEvent: {
                     required: "Selecione a data de nascimento",
                 },
+                PaymentToken: {
+                    required: "Selecione o cartão",
+                }
+
             }
         };
 

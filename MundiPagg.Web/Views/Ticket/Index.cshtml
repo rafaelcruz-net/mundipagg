@@ -6,7 +6,7 @@
 @model MundiPagg.Web.ModelView.TicketModelView
 
 @section scripts {
-    
+
     <script type="text/javascript">
         require(["app/mundipagg.main", "app/services/ticketService", "app/controller/ticketController"], function (app, ticketService, ticketController) {
             app.service("TicketService", ticketService);
@@ -19,7 +19,7 @@
 
 <div data-ng-controller="TicketController">
 
-    @Html.HiddenFor(x => x.Event.Id, new { name="EventId", @id="EventId" })
+    @Html.HiddenFor(x => x.Event.Id, new { name = "EventId", @id = "EventId" })
 
     <div class="row">
         <div class="medium-7 large-3 columns">
@@ -31,6 +31,17 @@
         </div>
         <div class="medium-5 large-5 columns">
             <div class="callout secondary">
+                <div class="row" style="display:none;" id="painelErrorQuick">
+                    <div class="callout primary">
+                        <h3>Aconteceu um problema ao processar a transação, por favor tente denovo</h3>
+                    </div>
+                </div>
+                <div class="row" style="display:none;" id="painelSuccessQuick">
+                    <div class="callout primary">
+                        <h3>Prezado cliente, seu pagamento está sendo processado.</h3>
+                    </div>
+                </div>
+
                 <form name="formStep1" id="formStep1" ng-submit="doStepOne(formStep1)" ng-validate="validationOptions">
                     <div class="row">
                         <div class="small-12 columns">
@@ -39,13 +50,35 @@
                                 @Html.TextBoxFor(x => x.Quantity, new { placeholder = "Quantidade", @ng_model = "Ticket.Quantity" })
                             </label>
                         </div>
-                        <div class="small-12 columns">
-                            <label>
-                                Para qual data ?
-                                @Html.TextBoxFor(x => x.DtEvent, new { placeholder = "Data", @ng_model = "Ticket.DtEvent", @readonly = "readonly" })
-                            </label>
-                            <button type="submit" class="button">Comprar</button>
-                        </div>
+                        
+                        @if (((List<SelectListItem>)ViewBag.PaymentTokens).Count() > 0)
+                        {
+                            <div class="small-12 columns">
+                                <label>
+                                    Para qual data ?
+                                    @Html.TextBoxFor(x => x.DtEvent, new { placeholder = "Data", @ng_model = "Ticket.DtEvent", @readonly = "readonly" })
+                                </label>
+                            </div>
+                            <div class="small-12 columns">
+                                <label>
+                                    Cartões Salvos
+                                    @Html.DropDownListFor(x => x.PaymentToken, (List<SelectListItem>)ViewBag.PaymentTokens, "Selecione", new { @ng_model = "Ticket.PaymentToken" })
+                                </label>
+                                <a href="#" ng-click="doBuyByOneClick($event, formStep1);" class="button success btn-comprar-quick">Comprar com 1 Click</a>&nbsp;<button type="submit" class="button btn-comprar">Comprar</button> 
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="small-12 columns">
+                                <label>
+                                    Para qual data ?
+                                    @Html.TextBoxFor(x => x.DtEvent, new { placeholder = "Data", @ng_model = "Ticket.DtEvent", @readonly = "readonly" })
+                                </label>
+                                <button type="submit" class="button">Comprar</button> 
+                            </div>
+                        }
+
+
                     </div>
                 </form>
             </div>
@@ -74,6 +107,7 @@
                     <div class="small-2 columns">
                         <label for="Name" class="middle">Bandeira </label>
                     </div>
+
                     <div class="small-10 columns">
                         @Html.DropDownListFor(x => x.CreditCardBrand, (IEnumerable<SelectListItem>)ViewBag.CreditCardBrandEnum, "Selecione", new { placeholder = "Bandeira", @ng_model = "Ticket.CreditCardBrand" })
                     </div>
@@ -111,8 +145,13 @@
                     </div>
                 </div>
                 <div class="row">
+                    <div class="small-12 columns">
+                        @Html.CheckBoxFor(x => x.KeepSave, new { @ng_model = "Ticket.KeepSave" })&nbsp;&nbsp;<span>Guardar Cartão para futuras Compras</span>
+                    </div>
+                </div>
+                <div class="row">
                     <div class="small-2 columns small-offset-10">
-                        <button class="secondary button float-right">Finalizar</button>
+                        <button class="secondary button float-right button-save">Finalizar</button>
                     </div>
                 </div>
             </fieldset>

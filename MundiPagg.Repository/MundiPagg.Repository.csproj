@@ -80,14 +80,17 @@
     <Compile Include="Context\Interfaces\IRepositoryBase.cs" />
     <Compile Include="Context\RepositoryBase.cs" />
     <Compile Include="CustomerRepository.cs" />
+    <Compile Include="CustomerTicketRepository.cs" />
     <Compile Include="EventRepository.cs" />
     <Compile Include="Interfaces\ICityRepository.cs" />
     <Compile Include="Interfaces\ICustomerRepository.cs" />
+    <Compile Include="Interfaces\ICustomerTicketRepository.cs" />
     <Compile Include="Interfaces\IEventRepository.cs" />
     <Compile Include="Interfaces\IStateRepository.cs" />
     <Compile Include="Mapping\CityMapping.cs" />
     <Compile Include="Mapping\CustomerAddressMapping.cs" />
     <Compile Include="Mapping\CustomerMapping.cs" />
+    <Compile Include="Mapping\CustomerPaymentTokenizerMapping.cs" />
     <Compile Include="Mapping\CustomerTicketMapping.cs" />
     <Compile Include="Mapping\EventMapping.cs" />
     <Compile Include="Mapping\StateMapping.cs" />
@@ -106,6 +109,10 @@
     <Compile Include="Migrations\201601140418295_AddStatusToCustomerTicket.cs" />
     <Compile Include="Migrations\201601140418295_AddStatusToCustomerTicket.Designer.cs">
       <DependentUpon>201601140418295_AddStatusToCustomerTicket.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601151158156_Add_PaymentTokenizer.cs" />
+    <Compile Include="Migrations\201601151158156_Add_PaymentTokenizer.Designer.cs">
+      <DependentUpon>201601151158156_Add_PaymentTokenizer.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -137,6 +144,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201601140418295_AddStatusToCustomerTicket.resx">
       <DependentUpon>201601140418295_AddStatusToCustomerTicket.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601151158156_Add_PaymentTokenizer.resx">
+      <DependentUpon>201601151158156_Add_PaymentTokenizer.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -11,6 +11,11 @@
             return $http.post(url, data);
         };
 
+        this.createQuick = function (data) {
+            var url = "/ticket/saveQuick";
+            return $http.post(url, data);
+        }
+
     };
 
     ticketService.$inject = ["$http"];

@@ -25,6 +25,7 @@ namespace MundiPagg.Repository.Mapping
 
             this.HasMany(x => x.Address).WithOptional().HasForeignKey(x => x.IdCustomer);
             this.HasMany(x => x.Tickets).WithOptional().HasForeignKey(x => x.IdCustomer);
+            this.HasMany(x => x.PaymentTokenizer).WithOptional().HasForeignKey(x => x.IdCustomer);
 
         }
 

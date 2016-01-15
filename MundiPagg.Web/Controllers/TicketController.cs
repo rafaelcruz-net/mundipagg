@@ -33,6 +33,14 @@ namespace MundiPagg.Web.Controllers
             set;
         }
 
+        [Inject]
+        public ICustomerPaymentService customerPaymentService
+        {
+            get;
+            set;
+        }
+
+
         // GET: Ticket
         [Route("{ticketId}")]
         public ActionResult Index(Guid ticketId)
@@ -40,17 +48,48 @@ namespace MundiPagg.Web.Controllers
             var eventDomain = this.eventService.GetById(ticketId);
             var eventModelView = Mapper.Map<Event, EventModelView>(eventDomain);
 
-            var enumSource = EnumerationUtils.GetAll<CreditCardBrandEnum>();
+            var currentUser = Membership.GetUser();
+            var customer = this.customerService.GetCustomerById(new Guid(currentUser.ProviderUserKey.ToString()));
+            List<PaymentTokenModelView> paymentTokens = new List<PaymentTokenModelView>(); 
 
+            if (customer.PaymentTokenizer != null && customer.PaymentTokenizer.Count > 0)
+            {
+                foreach (var paymentToken in customer.PaymentTokenizer)
+                {
+                    var payment = this.customerPaymentService.GetCustomerPaymentByToken(paymentToken);
+
+                    if (payment != null)
+                    {
+                        paymentTokens.Add(new PaymentTokenModelView()
+                        {
+                            CreditCardBrand = payment.CreditCardBrand,
+                            CreditCardNumber = payment.CreditCardNumber,
+                            InstantBuy = payment.InstantBuy,
+                            SecurityCode = payment.SecurityCode
+                        });
+                    }
+                }
+            }
+
+            var enumSource = EnumerationUtils.GetAll<CreditCardBrandEnum>();
             ViewBag.CreditCardBrandEnum = enumSource.Select(x => new SelectListItem
             {
                 Text = x.Value,
                 Value = x.Key.ToString()
             });
 
+            if (paymentTokens.Count > 0)
+            {
+                ViewBag.PaymentTokens = paymentTokens.Select(x => new SelectListItem
+                {
+                    Text = $"{x.CreditCardBrand.ToString()} - {x.CreditCardNumber}",
+                    Value = x.InstantBuy.ToString()
+                }).ToList();
+            }
+
             TicketModelView ticket = new TicketModelView()
             {
-                Event = eventModelView
+                Event = eventModelView,
             };
 
             return View(ticket);
@@ -74,7 +113,8 @@ namespace MundiPagg.Web.Controllers
                     SecurityCode = model.SecurityCode,
                     HolderName = model.HolderName,
                     Expiration = model.Expiration,
-                    CreditCardBrand = (CreditCardBrandEnum)Convert.ToInt32(model.CreditCardBrand)
+                    CreditCardBrand = (CreditCardBrandEnum)Convert.ToInt32(model.CreditCardBrand),
+                    KeepSave = model.KeepSave
                 };
 
                 ticket.Event = eventModel;
@@ -88,6 +128,43 @@ namespace MundiPagg.Web.Controllers
             }
             
         }
+
+        [Route("SaveQuick")]
+        [HttpPost]
+        public ActionResult SaveQuick(TicketModelView model)
+        {
+            try
+            {
+                var ticket = new CustomerTicket()
+                {
+                    Quantity = model.Quantity,
+                    DtEvent = model.DtEvent,
+                };
+
+                var currentUser = Membership.GetUser();
+                var eventModel = this.eventService.GetById(model.EventId);
+                var customer = this.customerService.GetCustomerById((Guid)currentUser.ProviderUserKey);
+
+                var customerPayment = new CustomerPayment()
+                {
+                    InstantBuy = Guid.Parse(model.PaymentToken),
+                    SecurityCode = model.SecurityCode
+                };
+
+                ticket.Event = eventModel;
+
+                this.customerService.CreateQuickTicket(ticket, customerPayment, customer);
+
+                return JsonSuccess();
+            }
+            catch (System.Exception ex)
+            {
+                return JsonError(ex.Message);
+            }
+
+        }
+
+
         [Route("{customerId}/History")]
         public ActionResult History(String customerId)
         {

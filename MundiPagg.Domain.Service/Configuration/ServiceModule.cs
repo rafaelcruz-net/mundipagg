@@ -23,8 +23,11 @@ namespace MundiPagg.Domain.Service.Configuration
 
         public override void Load()
         {
+            this.Bind<MundiPagg.MundiPaggProxy>().ToSelf();
+
             this.Bind(x => x.FromThisAssembly()
                             .SelectAllClasses()
+                            .Excluding<MundiPagg.MundiPaggProxy>()
                             .BindDefaultInterface()
                             .Configure((Ninject.Syntax.IBindingWhenInNamedWithOrOnSyntax<object> c) =>
                             {
