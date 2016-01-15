@@ -1,6 +1,6 @@
 # Mundi Pagg
 
-Mini Mundo -> Criar um solução de processamente do Evento como Cinema, Teatro e Eventos em Gerais utilizando a API do MundiPagg
+Criar um solução de processamente do Evento como Cinema, Teatro e Eventos em Gerais utilizando a API do MundiPagg
 
 # Tecnologias Utilizada Front End
  - Foundation Framework
