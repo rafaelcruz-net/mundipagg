@@ -10,6 +10,7 @@ using System.Data.Entity.Infrastructure;
 using MundiPagg.Infra.Data.Context;
 using MundiPagg.Repository.Context.Interfaces;
 using MundiPagg.Infra.Data.Interfaces;
+using System.Configuration;
 
 namespace MundiPagg.Repository.Context
 {
@@ -21,6 +22,9 @@ namespace MundiPagg.Repository.Context
             : base("MundiPagg.Connection")
         {
             Database.SetInitializer<MundiPaggContext>(null);
+
+            if (ConfigurationManager.AppSettings["EntityFramework.Proxy.Enable"] != null && ConfigurationManager.AppSettings["EntityFramework.Proxy.Enable"].ToString() == "0")
+                this.Configuration.ProxyCreationEnabled = false;
         }
 
         public MundiPaggContext(DbConnection connection, bool contextOwnsConnection)

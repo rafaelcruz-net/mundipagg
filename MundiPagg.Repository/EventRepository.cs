@@ -15,5 +15,11 @@ namespace MundiPagg.Repository
         {
             return base.GetById(ticketId);
         }
+
+        public new List<Event> GetAll()
+        {
+            return base.GetAll().ToList();
+        }
+
     }
 }
