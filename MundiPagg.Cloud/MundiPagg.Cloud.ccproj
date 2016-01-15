@@ -45,12 +45,22 @@
       <RoleName>MundiPagg.ProcessQueue</RoleName>
       <UpdateDiagnosticsConnectionStringOnPublish>True</UpdateDiagnosticsConnectionStringOnPublish>
     </ProjectReference>
+    <ProjectReference Include="..\MundiPagg.Web\MundiPagg.Web.csproj">
+      <Name>MundiPagg.Web</Name>
+      <Project>{b2345db4-408d-493f-802c-44f8b5191d21}</Project>
+      <Private>True</Private>
+      <RoleType>Web</RoleType>
+      <RoleName>MundiPagg.Web</RoleName>
+      <UpdateDiagnosticsConnectionStringOnPublish>True</UpdateDiagnosticsConnectionStringOnPublish>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="MundiPagg.ProcessQueueContent\" />
+    <Folder Include="MundiPagg.WebContent\" />
   </ItemGroup>
   <ItemGroup>
     <DiagnosticsConfiguration Include="MundiPagg.ProcessQueueContent\diagnostics.wadcfgx" />
+    <DiagnosticsConfiguration Include="MundiPagg.WebContent\diagnostics.wadcfgx" />
   </ItemGroup>
   <!-- Import the target files for this project template -->
   <PropertyGroup>
