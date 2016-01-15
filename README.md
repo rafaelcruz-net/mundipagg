@@ -2,6 +2,13 @@
 
 Mini Mundo -> Criar um solução de processamente do Evento como Cinema, Teatro e Eventos em Gerais utilizando a API do MundiPagg
 
+# Para Execução
+ - Instalar o Azure SDK versão 2.8
+ - Instalar as dependencias via Nuget
+ - Caso queira utilizar um banco proprio
+   - Localizar no web.conf a conexão com o banco
+   - Executar os migrations
+ 
 # Tecnologias Utilizada Front End
  - Foundation Framework
  - SASS
